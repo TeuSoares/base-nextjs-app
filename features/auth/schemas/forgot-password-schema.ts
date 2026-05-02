@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { EMAIL_REGEX } from "@/utils";
 
 export const forgotPasswordSchema = z.object({
 	email: z
@@ -6,7 +7,8 @@ export const forgotPasswordSchema = z.object({
 		.trim()
 		.toLowerCase()
 		.min(1, "O e-mail é obrigatório")
-		.email("E-mail inválido"),
+		.regex(EMAIL_REGEX, "E-mail inválido"),
 });
 
-export type ForgotPasswordFormData = z.infer<typeof forgotPasswordSchema>;
+export type ForgotPasswordInput = z.input<typeof forgotPasswordSchema>;
+export type ForgotPasswordOutput = z.output<typeof forgotPasswordSchema>;

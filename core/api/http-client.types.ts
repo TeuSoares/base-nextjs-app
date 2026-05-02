@@ -58,7 +58,7 @@ export type ApiException = {
 	statusCode: number;
 };
 
-export interface ApiResponse<T> {
-	data: T;
+export interface ApiResponse<T = void> {
+	data?: T;
 	message?: string;
 }

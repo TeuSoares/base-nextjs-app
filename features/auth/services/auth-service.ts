@@ -1,6 +1,9 @@
 import { api, getApiHeaders } from "@/core/api";
+import type { ApiResponse } from "../../../core/api/http-client.types";
+import type { ForgotPasswordOutput } from "../schemas/forgot-password-schema";
 import type { LoginOutput } from "../schemas/login-schema";
 import type { RegisterOutput } from "../schemas/register-schema";
+import type { ResetPasswordOutput } from "../schemas/reset-password-schema";
 import type { AuthResponse } from "../types";
 
 const base = "/api/auth";
@@ -41,8 +44,26 @@ export const authService = {
 		});
 	},
 
-	async me(): Promise<AuthResponse["data"]> {
-		return api.request<AuthResponse["data"]>({
+	async forgotPassword(data: ForgotPasswordOutput): Promise<ApiResponse> {
+		return api.request<ApiResponse>({
+			url: `${base}/forgot-password`,
+			method: "POST",
+			body: data,
+			headers: getApiHeaders(),
+		});
+	},
+
+	async resetPassword(data: ResetPasswordOutput): Promise<ApiResponse> {
+		return api.request<ApiResponse>({
+			url: `${base}/reset-password`,
+			method: "POST",
+			body: data,
+			headers: getApiHeaders(),
+		});
+	},
+
+	async me(): Promise<AuthResponse> {
+		return api.request<AuthResponse>({
 			url: `${base}/me`,
 			method: "GET",
 		});

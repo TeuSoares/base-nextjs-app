@@ -1,22 +1,25 @@
 import { z } from "zod";
+import { EMAIL_REGEX } from "../../../utils";
 
 export const resetPasswordSchema = z
 	.object({
 		token: z.string().min(1, "Token inválido"),
-		email: z.string().email("E-mail inválido"),
+		email: z
+			.string()
+			.min(1, "O e-mail é obrigatório")
+			.regex(EMAIL_REGEX, "E-mail inválido")
+			.trim()
+			.toLowerCase(),
 		password: z
 			.string()
-			.min(8, "A senha deve ter pelo menos 8 caracteres")
-			.regex(/[a-zA-Z]/, "A senha deve conter letras")
-			.regex(/[0-9]/, "A senha deve conter números")
-			.regex(/[A-Z]/, "A senha deve conter letras maiúsculas")
-			.regex(/[a-z]/, "A senha deve conter letras minúsculas"),
-		password_confirmation: z.string().min(1, "Confirme sua nova senha"),
+			.min(10, "A senha deve ter no mínimo 10 caracteres")
+			.max(100, "Senha muito longa"),
+		password_confirmation: z.string().min(1, "Confirme sua senha"),
 	})
 	.refine((data) => data.password === data.password_confirmation, {
 		message: "As senhas não coincidem",
 		path: ["password_confirmation"],
 	});
 
-export type ResetPasswordFormData = z.input<typeof resetPasswordSchema>;
-export type ResetPasswordFormOutput = z.output<typeof resetPasswordSchema>;
+export type ResetPasswordInput = z.input<typeof resetPasswordSchema>;
+export type ResetPasswordOutput = z.output<typeof resetPasswordSchema>;
