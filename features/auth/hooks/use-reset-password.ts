@@ -11,12 +11,8 @@ import { authService } from "../services/auth-service";
 
 function useResetPasswordMutation() {
 	return useMutation({
-		mutationFn: async (data: ResetPasswordOutput) => {
-			// Diferente do login, aqui não costuma precisar de CSRF se for stateless,
-			// mas se o teu back exigir, mantém a chamada:
-			// await authService.getCsrf();
-			return authService.resetPassword(data);
-		},
+		mutationFn: async (data: ResetPasswordOutput) =>
+			authService.resetPassword(data),
 	});
 }
 
