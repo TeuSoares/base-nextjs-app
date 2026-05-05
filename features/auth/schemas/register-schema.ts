@@ -1,17 +1,6 @@
 import { z } from "zod";
 import { EMAIL_REGEX, NAME_REGEX } from "@/utils";
 
-export const CountryCodeEnum = z.enum([
-	"BR",
-	"US",
-	"PT",
-	"ES",
-	"AR",
-	"FR",
-	"GB",
-]);
-export type CountryCode = z.infer<typeof CountryCodeEnum>;
-
 export const registerSchema = z
 	.object({
 		name: z
@@ -46,8 +35,6 @@ export const registerSchema = z
 			.max(100, "Senha muito longa"),
 
 		password_confirmation: z.string().min(1, "Confirme sua senha"),
-
-		country_code: CountryCodeEnum.default("BR"),
 	})
 	.refine((data) => data.password === data.password_confirmation, {
 		message: "As senhas não coincidem",

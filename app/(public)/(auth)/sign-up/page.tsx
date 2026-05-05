@@ -22,7 +22,6 @@ export default function SignUpPage() {
 			email: "",
 			password: "",
 			password_confirmation: "",
-			country_code: "BR",
 		} as RegisterInput,
 	});
 
