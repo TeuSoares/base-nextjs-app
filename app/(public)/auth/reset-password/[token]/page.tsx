@@ -7,11 +7,11 @@ import { useForm } from "react-hook-form";
 import { ActionButton } from "@/components/common";
 import { PasswordField } from "@/components/form";
 import { AuthForm } from "@/features/auth/components";
+import { useResetPassword } from "@/features/auth/hooks/use-reset-password";
 import {
 	type ResetPasswordInput,
 	resetPasswordSchema,
 } from "@/features/auth/schemas/reset-password-schema";
-import { useResetPassword } from "../../../../../features/auth/hooks";
 
 export default function ResetPasswordPage() {
 	const params = useParams();

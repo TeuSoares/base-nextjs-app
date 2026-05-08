@@ -1,8 +1,8 @@
 export const AUTH_ROUTES = {
-	signIn: "/sign-in",
-	signUp: "/sign-up",
-	forgotPassword: "/forgot-password",
-	resetPassword: "/reset-password",
+	signIn: "/auth/sign-in",
+	signUp: "/auth/sign-up",
+	forgotPassword: "/auth/forgot-password",
+	resetPassword: "/auth/reset-password",
 } as const;
 
 export const APP_ROUTES = {

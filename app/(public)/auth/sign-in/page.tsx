@@ -7,7 +7,7 @@ import { ActionButton } from "@/components/common/action-button";
 import { PasswordField, TextField } from "@/components/form";
 import { AUTH_ROUTES } from "@/core/config/constants/navigation";
 import { AuthFooterLink, AuthForm } from "@/features/auth/components";
-import { useLogin } from "@/features/auth/hooks";
+import { useLogin } from "@/features/auth/hooks/use-login";
 import {
 	type LoginInput,
 	loginSchema,

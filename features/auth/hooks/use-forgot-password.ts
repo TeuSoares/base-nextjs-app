@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import type { UseFormSetError } from "react-hook-form";
 import { toast } from "sonner";
+import { AUTH_ROUTES } from "@/core/config/constants/navigation";
 import { useApiErrorHandler } from "@/hooks";
 import type {
 	ForgotPasswordInput,
@@ -32,7 +33,7 @@ export function useForgotPassword() {
 				toast.success(
 					response.message || "Instruções enviadas para o seu e-mail",
 				);
-				router.push("/sign-in");
+				router.push(AUTH_ROUTES.signIn);
 			},
 			onError: (err) => handleApiError(err, setError),
 		});

@@ -6,7 +6,7 @@ import { ActionButton } from "@/components/common";
 import { PasswordField, TextField } from "@/components/form";
 import { AUTH_ROUTES } from "@/core/config/constants/navigation";
 import { AuthFooterLink, AuthForm } from "@/features/auth/components";
-import { useRegister } from "@/features/auth/hooks";
+import { useRegister } from "@/features/auth/hooks/use-register";
 import {
 	type RegisterInput,
 	registerSchema,

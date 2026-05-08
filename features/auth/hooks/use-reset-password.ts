@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import type { UseFormSetError } from "react-hook-form";
 import { toast } from "sonner";
+import { AUTH_ROUTES } from "@/core/config/constants/navigation";
 import { useApiErrorHandler } from "@/hooks";
 import type {
 	ResetPasswordInput,
@@ -28,7 +29,7 @@ export function useResetPassword() {
 		mutate(data as ResetPasswordOutput, {
 			onSuccess: (response) => {
 				toast.success(response.message || "Senha redefinida com sucesso!");
-				router.push("/sign-in");
+				router.push(AUTH_ROUTES.signIn);
 			},
 			onError: (err) => handleApiError(err, setError),
 		});

@@ -25,6 +25,7 @@ export function useLogout() {
 		mutate(undefined, {
 			onSuccess: () => {
 				router.push(AUTH_ROUTES.signIn);
+				router.refresh();
 			},
 			onError: () => {
 				toast.error("Erro ao encerrar sessão. Tente novamente.");

@@ -62,10 +62,13 @@ export const authService = {
 		});
 	},
 
-	async me(): Promise<AuthResponse> {
+	async me(options?: {
+		headers?: Record<string, string>;
+	}): Promise<AuthResponse> {
 		return api.request<AuthResponse>({
 			url: `${base}/me`,
 			method: "GET",
+			headers: options?.headers,
 		});
 	},
 };

@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import type { UseFormSetError } from "react-hook-form";
 import { toast } from "sonner";
+import { APP_ROUTES } from "@/core/config/constants/navigation";
 import { useApiErrorHandler } from "@/hooks";
 import type { RegisterInput, RegisterOutput } from "../schemas/register-schema";
 import { authService } from "../services/auth-service";
@@ -33,7 +34,7 @@ export function useRegister() {
 			onSuccess: (response) => {
 				const userName = response?.data?.name ?? "usuário";
 				toast.success(`Bem-vindo, ${userName}! Sua conta foi criada.`);
-				router.push("/dashboard");
+				router.push(APP_ROUTES.dashboard);
 			},
 			onError: (err) => handleApiError(err, setError),
 		});

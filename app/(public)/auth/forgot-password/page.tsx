@@ -6,7 +6,7 @@ import { ActionButton } from "@/components/common";
 import { TextField } from "@/components/form";
 import { AUTH_ROUTES } from "@/core/config/constants/navigation";
 import { AuthFooterLink, AuthForm } from "@/features/auth/components";
-import { useForgotPassword } from "@/features/auth/hooks";
+import { useForgotPassword } from "@/features/auth/hooks/use-forgot-password";
 import {
 	type ForgotPasswordInput,
 	forgotPasswordSchema,
