@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
 	poweredByHeader: false,
@@ -54,4 +55,6 @@ if (process.env.NODE_ENV === "production") {
 	});
 }
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin("./core/i18n/request.ts");
+
+export default withNextIntl(nextConfig);

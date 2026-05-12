@@ -1,6 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { ActionButton } from "@/components/common";
 import { PasswordField, TextField } from "@/components/form";
@@ -11,9 +12,12 @@ import {
 	type RegisterInput,
 	registerSchema,
 } from "@/features/auth/schemas/register-schema";
+import { useLanguage } from "@/hooks";
 
 export default function SignUpPage() {
 	const { register, isPending } = useRegister();
+
+	const { locale } = useLanguage();
 
 	const form = useForm<RegisterInput>({
 		resolver: zodResolver(registerSchema),
@@ -22,8 +26,13 @@ export default function SignUpPage() {
 			email: "",
 			password: "",
 			password_confirmation: "",
+			language: locale,
 		} as RegisterInput,
 	});
+
+	useEffect(() => {
+		form.setValue("language", locale);
+	}, [locale, form]);
 
 	const { control, handleSubmit, setError } = form;
 

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { DEFAULT_LOCALE, isSupportedLocale } from "@/core/i18n/constants";
 import { EMAIL_REGEX, NAME_REGEX } from "@/utils";
 
 export const registerSchema = z
@@ -35,6 +36,13 @@ export const registerSchema = z
 			.max(100, "Senha muito longa"),
 
 		password_confirmation: z.string().min(1, "Confirme sua senha"),
+
+		language: z
+			.string()
+			.refine((val) => !val || !isSupportedLocale(val), {
+				message: "Idioma não suportado",
+			})
+			.transform((val) => val || DEFAULT_LOCALE),
 	})
 	.refine((data) => data.password === data.password_confirmation, {
 		message: "As senhas não coincidem",

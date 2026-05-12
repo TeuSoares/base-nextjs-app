@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import type { ReactNode } from "react";
 import { AUTH_ROUTES } from "@/core/config/constants/navigation";
 import { getDehydratedState } from "@/core/services/query-client";
+import { LanguageSyncer } from "@/features/auth/components/language-syncer";
 import { getServerUser } from "@/features/auth/services/auth-server";
 
 export default async function ProtectedLayout({
@@ -17,6 +18,9 @@ export default async function ProtectedLayout({
 	const dehydratedState = getDehydratedState(["user"], user);
 
 	return (
-		<HydrationBoundary state={dehydratedState}>{children}</HydrationBoundary>
+		<HydrationBoundary state={dehydratedState}>
+			<LanguageSyncer userLanguage={user.data?.language} />
+			{children}
+		</HydrationBoundary>
 	);
 }
