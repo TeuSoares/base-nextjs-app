@@ -1,25 +1,34 @@
+import type { TranslationValues } from "next-intl";
 import { z } from "zod";
-import { EMAIL_REGEX } from "../../../utils";
+import { EMAIL_REGEX } from "@/utils";
 
-export const resetPasswordSchema = z
-	.object({
-		token: z.string().min(1, "Token inválido"),
-		email: z
-			.string()
-			.min(1, "O e-mail é obrigatório")
-			.regex(EMAIL_REGEX, "E-mail inválido")
-			.trim()
-			.toLowerCase(),
-		password: z
-			.string()
-			.min(10, "A senha deve ter no mínimo 10 caracteres")
-			.max(100, "Senha muito longa"),
-		password_confirmation: z.string().min(1, "Confirme sua senha"),
-	})
-	.refine((data) => data.password === data.password_confirmation, {
-		message: "As senhas não coincidem",
-		path: ["password_confirmation"],
-	});
+type TranslationFn = (key: string, values?: TranslationValues) => string;
 
-export type ResetPasswordInput = z.input<typeof resetPasswordSchema>;
-export type ResetPasswordOutput = z.output<typeof resetPasswordSchema>;
+export const createResetPasswordSchema = (
+	v: TranslationFn,
+	av: TranslationFn,
+) =>
+	z
+		.object({
+			token: z.string().min(1, av("tokenInvalid")),
+			email: z
+				.string()
+				.min(1, av("emailRequired"))
+				.regex(EMAIL_REGEX, av("emailInvalid"))
+				.trim()
+				.toLowerCase(),
+			password: z
+				.string()
+				.min(10, av("passwordMin", { min: 10 }))
+				.max(100, av("passwordMax")),
+			password_confirmation: z.string().min(1, v("fieldRequired")),
+		})
+		.refine((data) => data.password === data.password_confirmation, {
+			message: av("passwordsMustMatch"),
+			path: ["password_confirmation"],
+		});
+
+type ResetPasswordSchema = ReturnType<typeof createResetPasswordSchema>;
+
+export type ResetPasswordInput = z.input<ResetPasswordSchema>;
+export type ResetPasswordOutput = z.output<ResetPasswordSchema>;

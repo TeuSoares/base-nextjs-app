@@ -1,7 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import type { UseFormSetError } from "react-hook-form";
-import { toast } from "sonner";
 import { APP_ROUTES } from "@/core/config/constants/navigation";
 import { useApiErrorHandler } from "@/hooks";
 import type { LoginInput, LoginOutput } from "../schemas/login-schema";
@@ -29,7 +28,6 @@ export function useLogin() {
 	const login = (data: LoginInput, setError: UseFormSetError<LoginInput>) => {
 		mutate(data as LoginOutput, {
 			onSuccess: () => {
-				toast.success("Bem-vindo!");
 				router.push(APP_ROUTES.dashboard);
 				router.refresh();
 			},

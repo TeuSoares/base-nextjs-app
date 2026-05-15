@@ -1,6 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { ActionButton } from "@/components/common";
 import { TextField } from "@/components/form";
@@ -8,29 +9,32 @@ import { AUTH_ROUTES } from "@/core/config/constants/navigation";
 import { AuthFooterLink, AuthForm } from "@/features/auth/components";
 import { useForgotPassword } from "@/features/auth/hooks/use-forgot-password";
 import {
+	createForgotPasswordSchema,
 	type ForgotPasswordInput,
-	forgotPasswordSchema,
 } from "@/features/auth/schemas/forgot-password-schema";
+import { useZodSchema } from "@/hooks";
 
 export default function ForgotPasswordPage() {
-	const { forgotPassword, isPending } = useForgotPassword();
+	const t = useTranslations("Auth.forgotPassword");
+	const f = useTranslations("Auth.fields");
+
+	const schema = useZodSchema(createForgotPasswordSchema, "Auth.validation");
 
 	const form = useForm<ForgotPasswordInput>({
-		resolver: zodResolver(forgotPasswordSchema),
+		resolver: zodResolver(schema),
 		defaultValues: { email: "" },
 	});
 
 	const { control, handleSubmit, setError } = form;
+
+	const { forgotPassword, isPending } = useForgotPassword();
 
 	const onSubmit = (data: ForgotPasswordInput) =>
 		forgotPassword(data, setError);
 
 	return (
 		<AuthForm>
-			<AuthForm.Header
-				title="Esqueceu a senha?"
-				description="Digite seu e-mail e enviaremos as instruções para você criar uma nova senha."
-			/>
+			<AuthForm.Header title={t("title")} description={t("description")} />
 
 			<AuthForm.Form
 				id="forgot-password-form"
@@ -39,9 +43,9 @@ export default function ForgotPasswordPage() {
 				<TextField
 					name="email"
 					control={control}
-					label="E-mail cadastrado"
+					label={f("emailRegisteredLabel")}
 					type="email"
-					placeholder="joao@exemplo.com"
+					placeholder={f("emailPlaceholder")}
 				/>
 			</AuthForm.Form>
 
@@ -50,14 +54,14 @@ export default function ForgotPasswordPage() {
 					type="submit"
 					form="forgot-password-form"
 					loading={isPending}
-					loadingText="Enviando instruções..."
+					loadingText={t("loading")}
 				>
-					Enviar link de recuperação
+					{t("submit")}
 				</ActionButton>
 
 				<AuthFooterLink
-					label="Lembrou a senha?"
-					linkText="Voltar para o login"
+					label={t("rememberedPassword")}
+					linkText={t("backToLogin")}
 					href={AUTH_ROUTES.signIn}
 				/>
 			</AuthForm.Footer>

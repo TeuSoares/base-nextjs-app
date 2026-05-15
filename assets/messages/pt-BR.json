@@ -1,0 +1,100 @@
+{
+	"Metadata": {
+		"title": "Base Next.js App",
+		"description": "Um template inicial para construir aplicações web modernas com Next.js, React Query e Tailwind CSS."
+	},
+
+	"HomePage": {
+		"title": "Olá, mundo!"
+	},
+
+	"Auth": {
+		"fields": {
+			"nameLabel": "Nome completo",
+			"namePlaceholder": "Ex: João Silva",
+			"emailLabel": "E-mail",
+			"emailPlaceholder": "nome@exemplo.com",
+			"emailRegisteredLabel": "E-mail cadastrado",
+			"passwordLabel": "Senha",
+			"passwordPlaceholder": "Digite sua senha",
+			"confirmPasswordLabel": "Confirmar Senha",
+			"confirmPasswordPlaceholder": "Repita a senha",
+			"newPasswordLabel": "Nova Senha",
+			"newPasswordPlaceholder": "Digite sua nova senha",
+			"confirmNewPasswordLabel": "Confirmar Nova Senha",
+			"confirmNewPasswordPlaceholder": "Repita a nova senha"
+		},
+		"validation": {
+			"emailRequired": "O e-mail é obrigatório",
+			"emailInvalid": "E-mail inválido",
+			"passwordMin": "A senha deve ter no mínimo {min} caracteres",
+			"passwordMax": "Senha muito longa",
+			"passwordsMustMatch": "As senhas não coincidem",
+			"nameMin": "O nome deve ter no mínimo {min} caracteres",
+			"nameMax": "O nome deve ter no máximo {max} caracteres",
+			"nameInvalid": "O nome deve conter apenas letras",
+			"tokenInvalid": "Token inválido"
+		},
+		"signIn": {
+			"title": "Faça login na sua conta",
+			"description": "Insira suas credenciais para acessar a plataforma",
+			"emailLabel": "E-mail",
+			"emailPlaceholder": "nome@exemplo.com",
+			"passwordLabel": "Senha",
+			"passwordPlaceholder": "Digite sua senha",
+			"forgotPassword": "Esqueceu a senha?",
+			"submit": "Entrar na plataforma",
+			"loading": "Autenticando...",
+			"noAccount": "Ainda não tem conta?",
+			"signUpLink": "Cadastre-se"
+		},
+		"signUp": {
+			"title": "Crie sua conta",
+			"description": "Preencha os dados abaixo para se cadastrar",
+			"submit": "Finalizar cadastro",
+			"loading": "Criando conta...",
+			"alreadyHasAccount": "Já tem uma conta?",
+			"signInLink": "Faça login"
+		},
+		"forgotPassword": {
+			"title": "Esqueceu a senha?",
+			"description": "Digite seu e-mail e enviaremos as instruções para você criar uma nova senha.",
+			"submit": "Enviar link de recuperação",
+			"loading": "Enviando instruções...",
+			"rememberedPassword": "Lembrou a senha?",
+			"backToLogin": "Voltar para o login",
+			"success": "Instruções enviadas para o seu e-mail"
+		},
+		"resetPassword": {
+			"title": "Redefinir senha",
+			"description": "Escolha uma nova senha para sua conta.",
+			"submit": "Redefinir Senha",
+			"loading": "Atualizando senha...",
+			"success": "Senha redefinida com sucesso!"
+		}
+	},
+
+	"Errors": {
+		"notFound": {
+			"title": "404 - Página não encontrada",
+			"description": "A página que você está procurando não existe ou foi movida.",
+			"backToHome": "Voltar para o início"
+		},
+		"unexpected": "Ocorreu um erro inesperado. Tente novamente.",
+		"connection": "Não foi possível conectar ao servidor.",
+		"validation": "Verifique os campos destacados no formulário.",
+		"timeout": "Tempo limite de requisição atingido."
+	},
+
+	"Common": {
+		"notifications": {
+			"logoutError": "Erro ao encerrar sessão. Tente novamente.",
+			"logoutLoading": "Encerrando sessão..."
+		}
+	},
+
+	"Validation": {
+		"fieldRequired": "Campo obrigatório",
+		"languageInvalid": "Idioma não suportado"
+	}
+}

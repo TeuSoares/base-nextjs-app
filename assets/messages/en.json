@@ -1,0 +1,100 @@
+{
+	"Metadata": {
+		"title": "Base Next.js App",
+		"description": "A starter template for building modern web applications with Next.js, React Query, and Tailwind CSS."
+	},
+
+	"HomePage": {
+		"title": "Hello world!"
+	},
+
+	"Auth": {
+		"fields": {
+			"nameLabel": "Full name",
+			"namePlaceholder": "e.g., John Doe",
+			"emailLabel": "Email",
+			"emailPlaceholder": "name@example.com",
+			"emailRegisteredLabel": "Registered email",
+			"passwordLabel": "Password",
+			"passwordPlaceholder": "Enter your password",
+			"confirmPasswordLabel": "Confirm Password",
+			"confirmPasswordPlaceholder": "Repeat your password",
+			"newPasswordLabel": "New Password",
+			"newPasswordPlaceholder": "Enter your new password",
+			"confirmNewPasswordLabel": "Confirm New Password",
+			"confirmNewPasswordPlaceholder": "Repeat your new password"
+		},
+		"validation": {
+			"emailRequired": "Email is required",
+			"emailInvalid": "Invalid email",
+			"passwordMin": "Password must be at least {min} characters",
+			"passwordMax": "Password is too long",
+			"passwordsMustMatch": "Passwords do not match",
+			"nameMin": "Name must be at least {min} characters",
+			"nameMax": "Name must be at most {max} characters",
+			"nameInvalid": "Name must contain only letters",
+			"tokenInvalid": "Invalid token"
+		},
+		"signIn": {
+			"title": "Log in to your account",
+			"description": "Enter your credentials to access the platform",
+			"emailLabel": "Email",
+			"emailPlaceholder": "name@example.com",
+			"passwordLabel": "Password",
+			"passwordPlaceholder": "Enter your password",
+			"forgotPassword": "Forgot password?",
+			"submit": "Sign in to platform",
+			"loading": "Authenticating...",
+			"noAccount": "Don't have an account?",
+			"signUpLink": "Sign up"
+		},
+		"signUp": {
+			"title": "Create your account",
+			"description": "Fill in the details below to register",
+			"submit": "Complete registration",
+			"loading": "Creating account...",
+			"alreadyHasAccount": "Already have an account?",
+			"signInLink": "Log in"
+		},
+		"forgotPassword": {
+			"title": "Forgot password?",
+			"description": "Enter your email and we'll send you instructions to create a new password.",
+			"submit": "Send recovery link",
+			"loading": "Sending instructions...",
+			"rememberedPassword": "Remembered your password?",
+			"backToLogin": "Back to login",
+			"success": "Instructions sent to your email"
+		},
+		"resetPassword": {
+			"title": "Reset password",
+			"description": "Choose a new password for your account.",
+			"submit": "Reset Password",
+			"loading": "Updating password...",
+			"success": "Password reset successfully!"
+		}
+	},
+
+	"Errors": {
+		"notFound": {
+			"title": "404 - Page Not Found",
+			"description": "The page you are looking for does not exist or has been moved.",
+			"backToHome": "Back to home"
+		},
+		"unexpected": "An unexpected error occurred. Please try again.",
+		"connection": "Could not connect to the server.",
+		"validation": "Please check the highlighted fields in the form.",
+		"timeout": "Request timeout reached."
+	},
+
+	"Common": {
+		"notifications": {
+			"logoutError": "Error signing out. Please try again.",
+			"logoutLoading": "Signing out..."
+		}
+	},
+
+	"Validation": {
+		"languageInvalid": "Unsupported language",
+		"fieldRequired": "Required field"
+	}
+}

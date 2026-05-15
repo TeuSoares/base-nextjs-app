@@ -1,18 +1,23 @@
+import { useTranslations } from "next-intl";
 import type { FieldValues, Path, UseFormSetError } from "react-hook-form";
 import { toast } from "sonner";
 import { type ApiException, StatusCode } from "@/core/api/http-client.types";
 
+type ErrorKeys = "unexpected" | "connection" | "validation" | "timeout";
+
 export function useApiErrorHandler() {
+	const t = useTranslations("Errors");
+
 	const handleApiError = <T extends FieldValues>(
 		err: unknown,
 		setError?: UseFormSetError<T>,
-		defaultMessage = "Ocorreu um erro inesperado. Tente novamente.",
+		defaultMessage?: string,
 	) => {
 		const apiException = err as ApiException;
 		const { data, statusCode } = apiException;
 
-		if (!apiException.data) {
-			toast.error("Não foi possível conectar ao servidor.");
+		if (!data) {
+			toast.error(t("connection"));
 			return;
 		}
 
@@ -24,11 +29,21 @@ export function useApiErrorHandler() {
 				});
 			});
 
-			toast.error("Verifique os campos destacados no formulário.");
+			toast.error(t("validation"));
 			return;
 		}
 
-		toast.error(data?.message || defaultMessage);
+		const rawMessage = data.message || defaultMessage;
+		let finalMessage: string;
+
+		if (rawMessage?.startsWith("Errors.")) {
+			const key = rawMessage.split(".")[1] as ErrorKeys;
+			finalMessage = t(key);
+		} else {
+			finalMessage = rawMessage || t("unexpected");
+		}
+
+		toast.error(finalMessage);
 	};
 
 	return { handleApiError };

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import { Toaster } from "@/components/ui/sonner";
 import QueryProvider from "@/core/providers/query-provider";
 import { getCurrentLocale } from "../core/i18n/locale-provider";
@@ -12,11 +12,15 @@ const inter = Inter({
 	variable: "--font-sans",
 });
 
-export const metadata: Metadata = {
-	title: "Base Next.js App",
-	description:
-		"A starter template for building modern web applications with Next.js, React Query, and Tailwind CSS.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+	const locale = await getCurrentLocale();
+	const t = await getTranslations({ locale, namespace: "Metadata" });
+
+	return {
+		title: t("title"),
+		description: t("description"),
+	};
+}
 
 export default async function RootLayout({
 	children,

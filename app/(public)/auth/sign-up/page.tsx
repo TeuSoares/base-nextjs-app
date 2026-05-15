@@ -1,6 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { ActionButton } from "@/components/common";
@@ -9,18 +10,21 @@ import { AUTH_ROUTES } from "@/core/config/constants/navigation";
 import { AuthFooterLink, AuthForm } from "@/features/auth/components";
 import { useRegister } from "@/features/auth/hooks/use-register";
 import {
+	createRegisterSchema,
 	type RegisterInput,
-	registerSchema,
 } from "@/features/auth/schemas/register-schema";
-import { useLanguage } from "@/hooks";
+import { useLanguage, useZodSchema } from "@/hooks";
 
 export default function SignUpPage() {
-	const { register, isPending } = useRegister();
+	const t = useTranslations("Auth.signUp");
+	const f = useTranslations("Auth.fields");
 
 	const { locale } = useLanguage();
 
+	const schema = useZodSchema(createRegisterSchema, "Auth.validation");
+
 	const form = useForm<RegisterInput>({
-		resolver: zodResolver(registerSchema),
+		resolver: zodResolver(schema),
 		defaultValues: {
 			name: "",
 			email: "",
@@ -36,45 +40,44 @@ export default function SignUpPage() {
 
 	const { control, handleSubmit, setError } = form;
 
+	const { register, isPending } = useRegister();
+
 	const onSubmit = (data: RegisterInput) => register(data, setError);
 
 	return (
 		<AuthForm>
-			<AuthForm.Header
-				title="Crie sua conta"
-				description="Preencha os dados abaixo para se cadastrar"
-			/>
+			<AuthForm.Header title={t("title")} description={t("description")} />
 
 			<AuthForm.Form id="register-form" onSubmit={handleSubmit(onSubmit)}>
 				<div className="space-y-4">
 					<TextField
 						name="name"
 						control={control}
-						label="Nome completo"
-						placeholder="Ex: João Silva"
+						label={f("nameLabel")}
+						placeholder={f("namePlaceholder")}
 					/>
 
 					<TextField
 						name="email"
 						control={control}
-						label="E-mail"
+						label={f("emailLabel")}
 						type="email"
-						placeholder="joao@exemplo.com"
+						placeholder={f("emailPlaceholder")}
 					/>
 
 					<div className="grid md:grid-cols-2 gap-4">
 						<PasswordField
 							name="password"
 							control={control}
-							label="Senha"
-							placeholder="Digite sua senha"
+							label={f("passwordLabel")}
+							placeholder={f("passwordPlaceholder")}
 						/>
 
 						<PasswordField
 							name="password_confirmation"
 							control={control}
-							label="Confirmar Senha"
-							placeholder="Repita a senha"
+							label={f("confirmPasswordLabel")}
+							placeholder={f("confirmPasswordPlaceholder")}
 						/>
 					</div>
 				</div>
@@ -84,16 +87,16 @@ export default function SignUpPage() {
 				<ActionButton
 					type="submit"
 					loading={isPending}
-					loadingText="Criando conta..."
+					loadingText={t("loading")}
 					form="register-form"
 					className="w-full"
 				>
-					Finalizar cadastro
+					{t("submit")}
 				</ActionButton>
 
 				<AuthFooterLink
-					label="Já tem uma conta?"
-					linkText="Faça login"
+					label={t("alreadyHasAccount")}
+					linkText={t("signInLink")}
 					href={AUTH_ROUTES.signIn}
 				/>
 			</AuthForm.Footer>

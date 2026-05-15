@@ -105,7 +105,7 @@ export class HttpClient {
 		if (error instanceof Error && error.name === "AbortError") {
 			return {
 				statusCode: StatusCode.requestTimeout,
-				data: { message: "Tempo limite de requisição atingido." },
+				data: { message: "Errors.timeout" },
 			};
 		}
 
@@ -131,10 +131,7 @@ export class HttpClient {
 		return {
 			statusCode: StatusCode.serverError,
 			data: {
-				message:
-					error instanceof Error
-						? error.message
-						: "Erro de conexão com o servidor",
+				message: error instanceof Error ? error.message : "Errors.connection",
 			},
 		};
 	}

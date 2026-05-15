@@ -1,53 +1,59 @@
+import type { TranslationValues } from "next-intl";
 import { z } from "zod";
 import { DEFAULT_LOCALE, isSupportedLocale } from "@/core/i18n/constants";
 import { EMAIL_REGEX, NAME_REGEX } from "@/utils";
 
-export const registerSchema = z
-	.object({
-		name: z
-			.string()
-			.trim()
-			.min(3, "O nome deve ter no mínimo 3 caracteres")
-			.max(50, "O nome deve ter no máximo 50 caracteres")
-			.regex(NAME_REGEX, "O nome deve conter apenas letras")
-			.transform((name) =>
-				name
-					.split(/\s+/)
-					.filter((word) => word.length > 0)
-					.map((word) =>
-						word[0]
-							.toLocaleUpperCase()
-							.concat(word.substring(1).toLocaleLowerCase()),
-					)
-					.join(" "),
-			),
+type TranslationFn = (key: string, values?: TranslationValues) => string;
 
-		email: z
-			.string()
-			.trim()
-			.toLowerCase()
-			.min(1, "O e-mail é obrigatório")
-			.regex(EMAIL_REGEX, "E-mail inválido")
-			.max(255),
+export const createRegisterSchema = (v: TranslationFn, av: TranslationFn) =>
+	z
+		.object({
+			name: z
+				.string()
+				.trim()
+				.min(3, av("nameMin", { min: 3 }))
+				.max(50, av("nameMax", { max: 50 }))
+				.regex(NAME_REGEX, av("nameInvalid"))
+				.transform((name) =>
+					name
+						.split(/\s+/)
+						.filter((word) => word.length > 0)
+						.map((word) =>
+							word[0]
+								.toLocaleUpperCase()
+								.concat(word.substring(1).toLocaleLowerCase()),
+						)
+						.join(" "),
+				),
 
-		password: z
-			.string()
-			.min(10, "A senha deve ter no mínimo 10 caracteres")
-			.max(100, "Senha muito longa"),
+			email: z
+				.string()
+				.trim()
+				.toLowerCase()
+				.min(1, av("emailRequired"))
+				.regex(EMAIL_REGEX, av("emailInvalid"))
+				.max(255),
 
-		password_confirmation: z.string().min(1, "Confirme sua senha"),
+			password: z
+				.string()
+				.min(10, av("passwordMin", { min: 10 }))
+				.max(100, av("passwordMax")),
 
-		language: z
-			.string()
-			.refine((val) => !val || !isSupportedLocale(val), {
-				message: "Idioma não suportado",
-			})
-			.transform((val) => val || DEFAULT_LOCALE),
-	})
-	.refine((data) => data.password === data.password_confirmation, {
-		message: "As senhas não coincidem",
-		path: ["password_confirmation"],
-	});
+			password_confirmation: z.string().min(1, v("fieldRequired")),
 
-export type RegisterInput = z.input<typeof registerSchema>;
-export type RegisterOutput = z.output<typeof registerSchema>;
+			language: z
+				.string()
+				.refine((val) => !val || isSupportedLocale(val), {
+					message: v("languageInvalid"),
+				})
+				.transform((val) => val || DEFAULT_LOCALE),
+		})
+		.refine((data) => data.password === data.password_confirmation, {
+			message: av("passwordsMustMatch"),
+			path: ["password_confirmation"],
+		});
+
+type RegisterSchema = ReturnType<typeof createRegisterSchema>;
+
+export type RegisterInput = z.input<RegisterSchema>;
+export type RegisterOutput = z.output<RegisterSchema>;

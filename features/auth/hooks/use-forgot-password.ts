@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import type { UseFormSetError } from "react-hook-form";
 import { toast } from "sonner";
 import { AUTH_ROUTES } from "@/core/config/constants/navigation";
@@ -20,6 +21,7 @@ function useForgotPasswordMutation() {
 }
 
 export function useForgotPassword() {
+	const t = useTranslations("Auth.forgotPassword");
 	const { mutate, isPending } = useForgotPasswordMutation();
 	const { handleApiError } = useApiErrorHandler();
 	const router = useRouter();
@@ -30,9 +32,7 @@ export function useForgotPassword() {
 	) => {
 		mutate(data as ForgotPasswordOutput, {
 			onSuccess: (response) => {
-				toast.success(
-					response.message || "Instruções enviadas para o seu e-mail",
-				);
+				toast.success(response.message || t("success"));
 				router.push(AUTH_ROUTES.signIn);
 			},
 			onError: (err) => handleApiError(err, setError),
