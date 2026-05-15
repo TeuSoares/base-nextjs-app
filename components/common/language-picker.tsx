@@ -10,20 +10,25 @@ import {
 } from "@/components/ui/select";
 import { DEFAULT_LOCALE, type SupportedLocale } from "@/core/i18n/constants";
 import { useLanguage } from "@/hooks/use-language";
+import { cn } from "@/lib/utils";
 
 const LANGUAGE_CONFIG = {
 	pt_BR: { label: "Português", flag: "🇧🇷" },
 	en: { label: "English", flag: "🇺🇸" },
 } satisfies Record<SupportedLocale, { label: string; flag: string }>;
 
-export function LanguagePicker() {
+interface LanguagePickerProps {
+	className?: string;
+}
+
+export function LanguagePicker({ className }: LanguagePickerProps) {
 	const { locale, setLanguage } = useLanguage();
 
 	const safeLocale = (locale?.replace("-", "_") ||
 		DEFAULT_LOCALE) as SupportedLocale;
 
 	return (
-		<div className="flex items-center gap-2">
+		<div className={cn("flex items-center gap-2", className)}>
 			<Select value={safeLocale} onValueChange={setLanguage}>
 				<SelectTrigger className="w-40 bg-background border-muted-foreground/20 hover:bg-accent transition-colors">
 					<div className="flex items-center gap-2 text-sm font-medium">
