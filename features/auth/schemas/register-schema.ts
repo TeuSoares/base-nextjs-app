@@ -46,7 +46,9 @@ export const createRegisterSchema = (v: TranslationFn, av: TranslationFn) =>
 				.refine((val) => !val || isSupportedLocale(val), {
 					message: v("languageInvalid"),
 				})
-				.transform((val) => val || DEFAULT_LOCALE),
+				.transform(
+					(val) => val?.replace("-", "_") || DEFAULT_LOCALE.replace("-", "_"),
+				),
 		})
 		.refine((data) => data.password === data.password_confirmation, {
 			message: av("passwordsMustMatch"),
