@@ -22,7 +22,7 @@ export async function getCurrentLocale() {
 			}
 
 			if (isSupportedLocale(baseLanguage)) {
-				return baseLanguage.replace("_", "-");
+				return baseLanguage;
 			}
 		}
 
