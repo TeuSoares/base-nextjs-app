@@ -1,7 +1,7 @@
 "use server";
 
 import { getAuthHeaders } from "@/core/auth/auth-headers.server";
-import { APP_URL } from "@/core/config/env";
+import { APP_URL } from "@/core/config/constants/env";
 import type { AuthResponse } from "../types";
 import { authService } from "./auth-service";
 

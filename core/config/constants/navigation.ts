@@ -1,3 +1,35 @@
+import {
+	LayoutDashboard,
+	LifeBuoy,
+	type LucideIcon,
+	MessageSquare,
+	Settings,
+	Sparkles,
+	User,
+	Users,
+} from "lucide-react";
+import type { TranslationValues } from "next-intl";
+
+type TranslationFn = (key: string, values?: TranslationValues) => string;
+
+export interface NavChild {
+	title: string;
+	href: string;
+}
+
+export interface NavItem {
+	title: string;
+	icon: LucideIcon;
+	href?: string;
+	children?: NavChild[];
+}
+
+export interface FooterNavItem {
+	title: string;
+	icon: LucideIcon;
+	href: string;
+}
+
 export const AUTH_ROUTES = {
 	signIn: "/auth/sign-in",
 	signUp: "/auth/sign-up",
@@ -9,17 +41,39 @@ export const APP_ROUTES = {
 	dashboard: "/dashboard",
 	profile: "/profile",
 	settings: "/settings",
+	users: "/dashboard/users",
+	userRoles: "/dashboard/users/roles",
+	userDetail: (id: string) => `/dashboard/users/${id}`,
+	changelog: "/changelog",
+	support: "/support",
+	feedback: "/feedback",
 } as const;
 
-export const SIDEBAR_ITEMS = [
+export const getSidebarNavItems = (t: TranslationFn): NavItem[] => [
 	{
-		label: "Dashboard",
+		title: t("dashboard"),
+		icon: LayoutDashboard,
 		href: APP_ROUTES.dashboard,
-		icon: "LayoutDashboard",
 	},
 	{
-		label: "Perfil",
-		href: APP_ROUTES.profile,
-		icon: "User",
+		title: t("users"),
+		icon: Users,
+		children: [
+			{ title: t("allUsers"), href: APP_ROUTES.users },
+			{ title: t("roles"), href: APP_ROUTES.userRoles },
+		],
 	},
-] as const;
+	{
+		title: t("settings"),
+		icon: Settings,
+		href: APP_ROUTES.settings,
+	},
+];
+
+export const getSidebarFooterItems = (t: TranslationFn): FooterNavItem[] => [
+	{ title: t("profile"), icon: User, href: APP_ROUTES.profile },
+	{ title: t("settings"), icon: Settings, href: APP_ROUTES.settings },
+	{ title: t("whatsNew"), icon: Sparkles, href: APP_ROUTES.changelog },
+	{ title: t("helpSupport"), icon: LifeBuoy, href: APP_ROUTES.support },
+	{ title: t("sendFeedback"), icon: MessageSquare, href: APP_ROUTES.feedback },
+];

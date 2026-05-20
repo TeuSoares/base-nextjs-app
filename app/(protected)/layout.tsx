@@ -1,6 +1,9 @@
 import { HydrationBoundary } from "@tanstack/react-query";
 import { redirect } from "next/navigation";
 import type { ReactNode } from "react";
+import { AppSidebar } from "@/components/layout/sidebar/app-sidebar";
+import { ThemeProvider } from "@/components/theme/theme-provider";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { AUTH_ROUTES } from "@/core/config/constants/navigation";
 import { getDehydratedState } from "@/core/services/query-client";
 import { LanguageSyncer } from "@/features/auth/components/language-syncer";
@@ -20,7 +23,24 @@ export default async function ProtectedLayout({
 	return (
 		<HydrationBoundary state={dehydratedState}>
 			<LanguageSyncer userLanguage={user.data?.language} />
-			{children}
+			<ThemeProvider
+				attribute="class"
+				defaultTheme="system"
+				enableSystem
+				disableTransitionOnChange
+			>
+				<SidebarProvider>
+					<AppSidebar
+						user={{
+							name: user.data?.name || "",
+							email: user.data?.email || "",
+						}}
+					/>
+					<div className="flex flex-col flex-1 min-h-screen min-w-0">
+						{children}
+					</div>
+				</SidebarProvider>
+			</ThemeProvider>
 		</HydrationBoundary>
 	);
 }

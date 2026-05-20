@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { Toaster } from "@/components/ui/sonner";
 import QueryProvider from "@/core/providers/query-provider";
+import { TooltipProvider } from "../components/ui/tooltip";
 import { getCurrentLocale } from "../core/i18n/locale-provider";
 
 const inter = Inter({
@@ -39,7 +40,9 @@ export default async function RootLayout({
 			<body className="min-h-full flex flex-col">
 				<NextIntlClientProvider locale={locale} messages={messages}>
 					<QueryProvider>
-						<main className="flex-1 flex flex-col">{children}</main>
+						<TooltipProvider>
+							<main className="flex-1 flex flex-col">{children}</main>
+						</TooltipProvider>
 					</QueryProvider>
 
 					<Toaster closeButton richColors position="top-right" />

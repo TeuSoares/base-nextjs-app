@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { AUTH_CONFIG } from "@/core/config/env";
+import { AUTH_CONFIG } from "@/core/config/constants/env";
 
 export async function getAuthHeaders(): Promise<Record<string, string> | null> {
 	const cookieStore = await cookies();

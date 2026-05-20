@@ -38,9 +38,6 @@
 		"signIn": {
 			"title": "Log in to your account",
 			"description": "Enter your credentials to access the platform",
-			"emailLabel": "Email",
-			"emailPlaceholder": "name@example.com",
-			"passwordLabel": "Password",
 			"passwordPlaceholder": "Enter your password",
 			"forgotPassword": "Forgot password?",
 			"submit": "Sign in to platform",
@@ -93,8 +90,33 @@
 		}
 	},
 
+	"Buttons": {
+		"submit": "Submit",
+		"cancel": "Cancel",
+		"delete": "Delete",
+		"edit": "Edit",
+		"save": "Save",
+		"loading": "Loading...",
+		"back": "Back",
+		"logout": "Logout",
+		"tryAgain": "Try again"
+	},
+
 	"Validation": {
 		"languageInvalid": "Unsupported language",
 		"fieldRequired": "Required field"
+	},
+
+	"Navigation": {
+		"menu": "Menu",
+		"dashboard": "Dashboard",
+		"users": "Users",
+		"allUsers": "All Users",
+		"roles": "Roles",
+		"settings": "Settings",
+		"profile": "Profile",
+		"whatsNew": "What's new",
+		"helpSupport": "Help & support",
+		"sendFeedback": "Send feedback"
 	}
 }

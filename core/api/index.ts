@@ -1,5 +1,5 @@
 import { getCookie } from "@/utils";
-import { BASE_API_URL } from "../config/env";
+import { BASE_API_URL } from "../config/constants/env";
 import { HttpClient } from "./http-client";
 
 export const api = new HttpClient(BASE_API_URL);

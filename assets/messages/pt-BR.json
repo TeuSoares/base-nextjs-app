@@ -38,9 +38,6 @@
 		"signIn": {
 			"title": "Faça login na sua conta",
 			"description": "Insira suas credenciais para acessar a plataforma",
-			"emailLabel": "E-mail",
-			"emailPlaceholder": "nome@exemplo.com",
-			"passwordLabel": "Senha",
 			"passwordPlaceholder": "Digite sua senha",
 			"forgotPassword": "Esqueceu a senha?",
 			"submit": "Entrar na plataforma",
@@ -93,8 +90,33 @@
 		}
 	},
 
+	"Buttons": {
+		"submit": "Enviar",
+		"cancel": "Cancelar",
+		"delete": "Excluir",
+		"edit": "Editar",
+		"save": "Salvar",
+		"loading": "Carregando...",
+		"back": "Voltar",
+		"logout": "Sair",
+		"tryAgain": "Tentar novamente"
+	},
+
 	"Validation": {
 		"fieldRequired": "Campo obrigatório",
 		"languageInvalid": "Idioma não suportado"
+	},
+
+	"Navigation": {
+		"menu": "Menu",
+		"dashboard": "Painel",
+		"users": "Usuários",
+		"allUsers": "Todos os usuários",
+		"roles": "Funções",
+		"settings": "Configurações",
+		"profile": "Perfil",
+		"whatsNew": "Novidades",
+		"helpSupport": "Ajuda e suporte",
+		"sendFeedback": "Enviar feedback"
 	}
 }
