@@ -48,7 +48,7 @@ const FormCardContent = ({
 	...props
 }: FormCardContentProps) => (
 	<CardContent className="pt-4 pb-8">
-		<form className={cn("space-y-4", className)} {...props}>
+		<form className={cn("space-y-6", className)} {...props}>
 			{children}
 		</form>
 	</CardContent>
