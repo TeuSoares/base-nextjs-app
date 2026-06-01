@@ -6,6 +6,7 @@ export interface User {
 	email: string;
 	country_code: string;
 	language: string;
+	avatarUrl?: string;
 }
 
 export type AuthResponse = ApiResponse<User>;

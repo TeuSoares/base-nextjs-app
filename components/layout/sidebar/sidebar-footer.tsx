@@ -2,7 +2,7 @@ import { ChevronUp, LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useMemo } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { UserAvatar } from "@/components/common";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -38,13 +38,6 @@ export function AppSidebarFooter({ user }: AppSidebarFooterProps) {
 
 	const footerItems = useMemo(() => getSidebarFooterItems(tNav), [tNav]);
 
-	const initials = user.name
-		.split(" ")
-		.map((n) => n[0])
-		.slice(0, 2)
-		.join("")
-		.toUpperCase();
-
 	return (
 		<SidebarFooter className="border-t border-sidebar-border">
 			<SidebarMenu>
@@ -52,28 +45,25 @@ export function AppSidebarFooter({ user }: AppSidebarFooterProps) {
 					<DropdownMenu>
 						<DropdownMenuTrigger asChild>
 							<SidebarMenuButton className="h-12">
-								<Avatar className="h-7 w-7">
-									<AvatarImage src={user.avatarUrl} />
-									<AvatarFallback className="text-xs bg-primary text-primary-foreground">
-										{initials}
-									</AvatarFallback>
-								</Avatar>
-								<div className="flex flex-col text-left">
-									<span className="text-sm font-medium leading-none">
-										{user.name}
-									</span>
-									<span className="text-xs text-muted-foreground">
-										{user.email}
-									</span>
-								</div>
+								<UserAvatar
+									name={user.name}
+									email={user.email}
+									avatarUrl={user.avatarUrl}
+									showInfo
+									infoSize="md"
+									className="h-7 w-7"
+									fallbackClassName="text-xs"
+								/>
 								<ChevronUp className="ml-auto" />
 							</SidebarMenuButton>
 						</DropdownMenuTrigger>
 						<DropdownMenuContent side="top" className="w-56">
 							<DropdownMenuLabel className="font-normal">
-								<div className="flex flex-col gap-0.5">
-									<span className="text-sm font-medium">{user.name}</span>
-									<span className="text-xs text-muted-foreground">
+								<div className="flex flex-col gap-0.5 min-w-0">
+									<span className="text-sm font-medium truncate">
+										{user.name}
+									</span>
+									<span className="text-xs text-muted-foreground truncate">
 										{user.email}
 									</span>
 								</div>

@@ -22,7 +22,9 @@
 			"newPasswordLabel": "New Password",
 			"newPasswordPlaceholder": "Enter your new password",
 			"confirmNewPasswordLabel": "Confirm New Password",
-			"confirmNewPasswordPlaceholder": "Repeat your new password"
+			"confirmNewPasswordPlaceholder": "Repeat your new password",
+			"currentPasswordLabel": "Current Password",
+			"currentPasswordPlaceholder": "Enter your current password"
 		},
 		"validation": {
 			"emailRequired": "Email is required",
@@ -104,7 +106,8 @@
 
 	"Validation": {
 		"languageInvalid": "Unsupported language",
-		"fieldRequired": "Required field"
+		"fieldRequired": "Required field",
+		"passwordsMustMatch": "Passwords do not match"
 	},
 
 	"Navigation": {
@@ -118,5 +121,21 @@
 		"whatsNew": "What's new",
 		"helpSupport": "Help & support",
 		"sendFeedback": "Send feedback"
+	},
+
+	"Profile": {
+		"title": "Profile",
+		"infoTitle": "Personal Information",
+		"infoDescription": "Update your name, email and language.",
+		"passwordTitle": "Change Password",
+		"passwordDescription": "Choose a strong password for your account.",
+		"languageLabel": "Language",
+		"save": "Save changes",
+		"savePassword": "Update password",
+		"saving": "Saving...",
+		"tabProfile": "Profile",
+		"tabSecurity": "Security",
+		"updateSuccess": "Profile updated successfully!",
+		"passwordSuccess": "Password updated successfully!"
 	}
 }

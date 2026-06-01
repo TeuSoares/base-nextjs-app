@@ -7,15 +7,17 @@ import {
 	type FieldPath,
 	type FieldValues,
 } from "react-hook-form";
-import { Field, FieldError, FieldLabel } from "@/components/ui/field";
+import { Field, FieldError } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { FieldLabelRow } from "./field-label-row";
 
 interface TextFieldProps<T extends FieldValues>
 	extends InputHTMLAttributes<HTMLInputElement> {
 	name: FieldPath<T>;
 	control: Control<T>;
 	label?: string;
+	required?: boolean;
 	rightLabel?: ReactNode;
 	description?: string;
 	containerClassName?: string;
@@ -25,6 +27,7 @@ const TextField = <T extends FieldValues>({
 	name,
 	control,
 	label,
+	required,
 	rightLabel,
 	className,
 	onChange: externalOnChange,
@@ -36,14 +39,11 @@ const TextField = <T extends FieldValues>({
 			control={control}
 			render={({ field, fieldState }) => (
 				<Field data-invalid={fieldState.invalid} className="w-full space-y-1.5">
-					<div className="flex items-center justify-between">
-						{label && (
-							<FieldLabel className="text-sm font-semibold tracking-tight text-foreground">
-								{label}
-							</FieldLabel>
-						)}
-						{rightLabel}
-					</div>
+					<FieldLabelRow
+						label={label}
+						required={required}
+						rightLabel={rightLabel}
+					/>
 
 					<Input
 						{...field}

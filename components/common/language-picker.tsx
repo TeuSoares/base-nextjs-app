@@ -8,14 +8,13 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import { DEFAULT_LOCALE, type SupportedLocale } from "@/core/i18n/constants";
+import {
+	DEFAULT_LOCALE,
+	LANGUAGE_CONFIG,
+	type SupportedLocale,
+} from "@/core/i18n/constants";
 import { useLanguage } from "@/hooks/use-language";
 import { cn } from "@/lib/utils";
-
-const LANGUAGE_CONFIG = {
-	pt_BR: { label: "Português", flag: "🇧🇷" },
-	en: { label: "English", flag: "🇺🇸" },
-} satisfies Record<SupportedLocale, { label: string; flag: string }>;
 
 interface LanguagePickerProps {
 	className?: string;

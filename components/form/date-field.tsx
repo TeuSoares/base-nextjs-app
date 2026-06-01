@@ -11,24 +11,27 @@ import {
 } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import { Field, FieldError, FieldLabel } from "@/components/ui/field";
+import { Field, FieldError } from "@/components/ui/field";
 import {
 	Popover,
 	PopoverContent,
 	PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
+import { FieldLabelRow } from "./field-label-row";
 
 interface DateFieldProps<T extends FieldValues> {
 	name: FieldPath<T>;
 	control: Control<T>;
 	label?: string;
+	required?: boolean;
 }
 
 export const DateField = <T extends FieldValues>({
 	name,
 	control,
 	label,
+	required,
 }: DateFieldProps<T>) => {
 	return (
 		<Controller
@@ -36,9 +39,7 @@ export const DateField = <T extends FieldValues>({
 			control={control}
 			render={({ field, fieldState }) => (
 				<Field data-invalid={fieldState.invalid} className="w-full space-y-1.5">
-					{label && (
-						<FieldLabel className="text-sm font-semibold">{label}</FieldLabel>
-					)}
+					<FieldLabelRow label={label} required={required} />
 
 					<Popover>
 						<PopoverTrigger asChild>

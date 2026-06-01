@@ -22,7 +22,9 @@
 			"newPasswordLabel": "Nova Senha",
 			"newPasswordPlaceholder": "Digite sua nova senha",
 			"confirmNewPasswordLabel": "Confirmar Nova Senha",
-			"confirmNewPasswordPlaceholder": "Repita a nova senha"
+			"confirmNewPasswordPlaceholder": "Repita a nova senha",
+			"currentPasswordLabel": "Senha Atual",
+			"currentPasswordPlaceholder": "Digite sua senha atual"
 		},
 		"validation": {
 			"emailRequired": "O e-mail é obrigatório",
@@ -104,7 +106,8 @@
 
 	"Validation": {
 		"fieldRequired": "Campo obrigatório",
-		"languageInvalid": "Idioma não suportado"
+		"languageInvalid": "Idioma não suportado",
+		"passwordsMustMatch": "As senhas não coincidem"
 	},
 
 	"Navigation": {
@@ -118,5 +121,21 @@
 		"whatsNew": "Novidades",
 		"helpSupport": "Ajuda e suporte",
 		"sendFeedback": "Enviar feedback"
+	},
+
+	"Profile": {
+		"title": "Perfil",
+		"infoTitle": "Informações Pessoais",
+		"infoDescription": "Atualize seu nome, e-mail e idioma.",
+		"passwordTitle": "Alterar Senha",
+		"passwordDescription": "Escolha uma senha forte para sua conta.",
+		"languageLabel": "Idioma",
+		"save": "Salvar alterações",
+		"savePassword": "Atualizar senha",
+		"saving": "Salvando...",
+		"tabProfile": "Perfil",
+		"tabSecurity": "Segurança",
+		"updateSuccess": "Perfil atualizado com sucesso!",
+		"passwordSuccess": "Senha atualizada com sucesso!"
 	}
 }

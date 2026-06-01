@@ -10,3 +10,11 @@ export function isSupportedLocale(locale: unknown): locale is SupportedLocale {
 		(SUPPORTED_LOCALES as readonly string[]).includes(locale)
 	);
 }
+
+export const LANGUAGE_CONFIG: Record<
+	SupportedLocale,
+	{ label: string; flag: string }
+> = {
+	pt_BR: { label: "Português", flag: "🇧🇷" },
+	en: { label: "English", flag: "🇺🇸" },
+};
