@@ -2,16 +2,16 @@
 
 import { getAuthHeaders } from "@/core/auth/auth-headers.server";
 import { APP_URL } from "@/core/config/constants/env";
-import type { AuthResponse } from "../types";
-import { authService } from "./auth-service";
+import { userService } from "../../user/services/user-service";
+import type { UserResponse } from "../../user/types";
 
-export async function getServerUser(): Promise<AuthResponse | null> {
+export async function getServerUser(): Promise<UserResponse | null> {
 	const authHeaders = await getAuthHeaders();
 
 	if (!authHeaders) return null;
 
 	try {
-		const user = await authService.me({
+		const user = await userService.me({
 			headers: {
 				...authHeaders,
 				Referer: APP_URL,

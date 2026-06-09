@@ -47,6 +47,8 @@ export const APP_ROUTES = {
 	changelog: "/changelog",
 	support: "/support",
 	feedback: "/feedback",
+	checkoutSuccess: "/checkout/success",
+	checkoutCancel: "/checkout/cancel",
 } as const;
 
 export const getSidebarNavItems = (t: TranslationFn): NavItem[] => [

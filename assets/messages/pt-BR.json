@@ -137,5 +137,26 @@
 		"tabSecurity": "Segurança",
 		"updateSuccess": "Perfil atualizado com sucesso!",
 		"passwordSuccess": "Senha atualizada com sucesso!"
+	},
+
+	"Checkout": {
+		"success": {
+			"title": "Pagamento realizado!",
+			"description": "Sua assinatura está sendo ativada. Você será redirecionado para o painel em breve.",
+			"redirecting": "Redirecionando para o painel...",
+			"cta": "Ir para o painel"
+		},
+		"cancel": {
+			"title": "Checkout cancelado",
+			"description": "Nenhum pagamento foi realizado. Você pode tentar novamente quando quiser.",
+			"tryAgain": "Tentar novamente",
+			"back": "Voltar",
+			"redirecting": "Redirecionando para o Stripe..."
+		}
+	},
+
+	"Billing": {
+		"cancelSuccess": "Assinatura cancelada com sucesso.",
+		"resumeSuccess": "Assinatura reativada com sucesso."
 	}
 }

@@ -1,10 +1,10 @@
 "use client";
 
 import { PageHeader } from "@/components/layout/page-header";
-import { useUser } from "@/features/auth/hooks/use-user";
+import { useMe } from "@/features/user/hooks/use-me";
 
 export default function DashboardPage() {
-	const { data: user } = useUser();
+	const { data: user } = useMe();
 
 	return (
 		<>

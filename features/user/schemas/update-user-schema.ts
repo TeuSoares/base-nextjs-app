@@ -5,7 +5,7 @@ import { EMAIL_REGEX, NAME_REGEX } from "@/utils";
 
 type TranslationFn = (key: string, values?: TranslationValues) => string;
 
-export const createProfileInfoSchema = (v: TranslationFn, av: TranslationFn) =>
+export const createUserInfoSchema = (v: TranslationFn, av: TranslationFn) =>
 	z.object({
 		name: z
 			.string()
@@ -25,10 +25,7 @@ export const createProfileInfoSchema = (v: TranslationFn, av: TranslationFn) =>
 		}),
 	});
 
-export const createProfilePasswordSchema = (
-	v: TranslationFn,
-	av: TranslationFn,
-) =>
+export const createUserPasswordSchema = (v: TranslationFn, av: TranslationFn) =>
 	z
 		.object({
 			current_password: z.string().min(1, v("fieldRequired")),
@@ -43,10 +40,10 @@ export const createProfilePasswordSchema = (
 			path: ["password_confirmation"],
 		});
 
-type ProfileInfoSchema = ReturnType<typeof createProfileInfoSchema>;
-type ProfilePasswordSchema = ReturnType<typeof createProfilePasswordSchema>;
+type UserInfoSchema = ReturnType<typeof createUserInfoSchema>;
+type UserPasswordSchema = ReturnType<typeof createUserPasswordSchema>;
 
-export type ProfileInfoInput = z.input<ProfileInfoSchema>;
-export type ProfileInfoOutput = z.output<ProfileInfoSchema>;
-export type ProfilePasswordInput = z.input<ProfilePasswordSchema>;
-export type ProfilePasswordOutput = z.output<ProfilePasswordSchema>;
+export type UserInfoInput = z.input<UserInfoSchema>;
+export type UserInfoOutput = z.output<UserInfoSchema>;
+export type UserPasswordInput = z.input<UserPasswordSchema>;
+export type UserPasswordOutput = z.output<UserPasswordSchema>;

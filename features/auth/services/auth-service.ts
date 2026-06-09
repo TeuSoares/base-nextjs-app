@@ -1,10 +1,10 @@
 import { api, getApiHeaders } from "@/core/api";
 import type { ApiResponse } from "../../../core/api/http-client.types";
+import type { UserResponse } from "../../user/types";
 import type { ForgotPasswordOutput } from "../schemas/forgot-password-schema";
 import type { LoginOutput } from "../schemas/login-schema";
 import type { RegisterOutput } from "../schemas/register-schema";
 import type { ResetPasswordOutput } from "../schemas/reset-password-schema";
-import type { AuthResponse } from "../types";
 
 const base = "/api/auth";
 
@@ -16,8 +16,8 @@ export const authService = {
 		});
 	},
 
-	async register(data: RegisterOutput): Promise<AuthResponse> {
-		return api.request<AuthResponse>({
+	async register(data: RegisterOutput): Promise<UserResponse> {
+		return api.request<UserResponse>({
 			url: `${base}/register`,
 			method: "POST",
 			body: data,
@@ -27,8 +27,8 @@ export const authService = {
 
 	async login(
 		credentials: Pick<LoginOutput, "email" | "password">,
-	): Promise<AuthResponse> {
-		return api.request<AuthResponse>({
+	): Promise<UserResponse> {
+		return api.request<UserResponse>({
 			url: `${base}/login`,
 			method: "POST",
 			body: credentials,
@@ -59,16 +59,6 @@ export const authService = {
 			method: "POST",
 			body: data,
 			headers: getApiHeaders(),
-		});
-	},
-
-	async me(options?: {
-		headers?: Record<string, string>;
-	}): Promise<AuthResponse> {
-		return api.request<AuthResponse>({
-			url: `${base}/me`,
-			method: "GET",
-			headers: options?.headers,
 		});
 	},
 };

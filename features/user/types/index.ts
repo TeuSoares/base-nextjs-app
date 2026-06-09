@@ -7,6 +7,9 @@ export interface User {
 	country_code: string;
 	language: string;
 	avatarUrl?: string;
+	has_active_subscription: boolean;
+	subscription_status: string | null;
+	subscription_ends_at: string | null;
 }
 
-export type AuthResponse = ApiResponse<User>;
+export type UserResponse = ApiResponse<User>;

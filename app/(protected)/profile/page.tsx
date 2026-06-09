@@ -12,29 +12,29 @@ import {
 	LANGUAGE_CONFIG,
 	SUPPORTED_LOCALES,
 } from "@/core/i18n/constants";
-import { useUser } from "@/features/auth/hooks/use-user";
-import { useUpdatePassword } from "@/features/profile/hooks/use-update-password";
-import { useUpdateProfile } from "@/features/profile/hooks/use-update-profile";
+import { useMe } from "@/features/user/hooks/use-me";
+import { useUpdatePassword } from "@/features/user/hooks/use-update-password";
+import { useUpdateUser } from "@/features/user/hooks/use-update-user";
 import {
-	createProfileInfoSchema,
-	createProfilePasswordSchema,
-	type ProfileInfoInput,
-	type ProfilePasswordInput,
-} from "@/features/profile/schemas/profile-schema";
+	createUserInfoSchema,
+	createUserPasswordSchema,
+	type UserInfoInput,
+	type UserPasswordInput,
+} from "@/features/user/schemas/update-user-schema";
 import { useZodSchema } from "@/hooks";
 
 export default function ProfilePage() {
-	const { data: user } = useUser();
+	const { data: user } = useMe();
 	const f = useTranslations("Auth.fields");
 	const t = useTranslations("Profile");
 
-	const infoSchema = useZodSchema(createProfileInfoSchema, "Auth.validation");
+	const infoSchema = useZodSchema(createUserInfoSchema, "Auth.validation");
 	const passwordSchema = useZodSchema(
-		createProfilePasswordSchema,
+		createUserPasswordSchema,
 		"Auth.validation",
 	);
 
-	const infoForm = useForm<ProfileInfoInput>({
+	const infoForm = useForm<UserInfoInput>({
 		resolver: zodResolver(infoSchema),
 		defaultValues: {
 			name: user?.name ?? "",
@@ -43,7 +43,7 @@ export default function ProfilePage() {
 		},
 	});
 
-	const passwordForm = useForm<ProfilePasswordInput>({
+	const passwordForm = useForm<UserPasswordInput>({
 		resolver: zodResolver(passwordSchema),
 		defaultValues: {
 			current_password: "",
@@ -52,13 +52,13 @@ export default function ProfilePage() {
 		},
 	});
 
-	const { updateProfile, isPending: isUpdatingProfile } = useUpdateProfile();
+	const { updateUser, isPending: isUpdatingUser } = useUpdateUser();
 	const { updatePassword, isPending: isUpdatingPassword } = useUpdatePassword();
 
-	const onSubmitInfo = (data: ProfileInfoInput) =>
-		updateProfile(data, infoForm.setError);
+	const onSubmitInfo = (data: UserInfoInput) =>
+		updateUser(data, infoForm.setError);
 
-	const onSubmitPassword = (data: ProfilePasswordInput) =>
+	const onSubmitPassword = (data: UserPasswordInput) =>
 		updatePassword(data, passwordForm.setError, passwordForm.reset);
 
 	return (
@@ -127,7 +127,7 @@ export default function ProfilePage() {
 									<ActionButton
 										type="submit"
 										form="profile-info-form"
-										loading={isUpdatingProfile}
+										loading={isUpdatingUser}
 										loadingText={t("saving")}
 									>
 										{t("save")}

@@ -4,15 +4,14 @@ import type { UseFormSetError } from "react-hook-form";
 import { toast } from "sonner";
 import { useApiErrorHandler } from "@/hooks";
 import type {
-	ProfilePasswordInput,
-	ProfilePasswordOutput,
-} from "../schemas/profile-schema";
-import { profileService } from "../services/profile-service";
+	UserPasswordInput,
+	UserPasswordOutput,
+} from "../schemas/update-user-schema";
+import { userService } from "../services/user-service";
 
 function useUpdatePasswordMutation() {
 	return useMutation({
-		mutationFn: (data: ProfilePasswordOutput) =>
-			profileService.updatePassword(data),
+		mutationFn: (data: UserPasswordOutput) => userService.updatePassword(data),
 	});
 }
 
@@ -22,11 +21,11 @@ export function useUpdatePassword() {
 	const t = useTranslations("Profile");
 
 	const updatePassword = (
-		data: ProfilePasswordInput,
-		setError: UseFormSetError<ProfilePasswordInput>,
+		data: UserPasswordInput,
+		setError: UseFormSetError<UserPasswordInput>,
 		reset: () => void,
 	) => {
-		mutate(data as ProfilePasswordOutput, {
+		mutate(data as UserPasswordOutput, {
 			onSuccess: () => {
 				reset();
 				toast.success(t("passwordSuccess"));

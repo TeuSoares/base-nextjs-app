@@ -137,5 +137,26 @@
 		"tabSecurity": "Security",
 		"updateSuccess": "Profile updated successfully!",
 		"passwordSuccess": "Password updated successfully!"
+	},
+
+	"Checkout": {
+		"success": {
+			"title": "Payment successful!",
+			"description": "Your subscription is being activated. You'll be redirected to your dashboard shortly.",
+			"redirecting": "Redirecting you to the dashboard...",
+			"cta": "Go to dashboard"
+		},
+		"cancel": {
+			"title": "Checkout cancelled",
+			"description": "No payment was made. You can try again whenever you're ready.",
+			"tryAgain": "Try again",
+			"back": "Back",
+			"redirecting": "Redirecting to Stripe..."
+		}
+	},
+
+	"Billing": {
+		"cancelSuccess": "Subscription cancelled successfully.",
+		"resumeSuccess": "Subscription resumed successfully."
 	}
 }

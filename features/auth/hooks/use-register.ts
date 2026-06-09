@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
 import type { UseFormSetError } from "react-hook-form";
-import { APP_ROUTES } from "@/core/config/constants/navigation";
+import type { Plan } from "@/core/config/constants/payment";
 import { useApiErrorHandler } from "@/hooks";
+import { useCheckout } from "../../billing/hooks/use-checkout";
 import type { RegisterInput, RegisterOutput } from "../schemas/register-schema";
 import { authService } from "../services/auth-service";
 
@@ -23,15 +23,16 @@ function useRegisterMutation() {
 export function useRegister() {
 	const { mutate, isPending } = useRegisterMutation();
 	const { handleApiError } = useApiErrorHandler();
-	const router = useRouter();
+	const { checkout } = useCheckout();
 
 	const register = (
 		data: RegisterInput,
 		setError: UseFormSetError<RegisterInput>,
+		plan?: Plan,
 	) => {
 		mutate(data as RegisterOutput, {
 			onSuccess: () => {
-				router.push(APP_ROUTES.dashboard);
+				checkout({ plan });
 			},
 			onError: (err) => handleApiError(err, setError),
 		});

@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { ActionButton } from "@/components/common/action-button";
 import { PasswordField, TextField } from "@/components/form";
 import { AUTH_ROUTES } from "@/core/config/constants/navigation";
-import { AuthFooterLink, AuthForm } from "@/features/auth/components";
+import { AuthForm } from "@/features/auth/components";
 import { useLogin } from "@/features/auth/hooks/use-login";
 import {
 	createLoginSchema,
@@ -71,12 +71,6 @@ export default function SignInPage() {
 				>
 					{t("submit")}
 				</ActionButton>
-
-				<AuthFooterLink
-					label={t("noAccount")}
-					linkText={t("signUpLink")}
-					href={AUTH_ROUTES.signUp}
-				/>
 			</AuthForm.Footer>
 		</AuthForm>
 	);

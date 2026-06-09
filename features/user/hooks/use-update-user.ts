@@ -5,33 +5,33 @@ import { toast } from "sonner";
 import { useApiErrorHandler } from "@/hooks";
 import { useLanguage } from "@/hooks/use-language";
 import type {
-	ProfileInfoInput,
-	ProfileInfoOutput,
-} from "../schemas/profile-schema";
-import { profileService } from "../services/profile-service";
+	UserInfoInput,
+	UserInfoOutput,
+} from "../schemas/update-user-schema";
+import { userService } from "../services/user-service";
 
-function useUpdateProfileMutation() {
+function useUpdateUserMutation() {
 	const queryClient = useQueryClient();
 
 	return useMutation({
-		mutationFn: (data: ProfileInfoOutput) => profileService.updateProfile(data),
+		mutationFn: (data: UserInfoOutput) => userService.updateUser(data),
 		onSuccess: (response) => {
 			queryClient.setQueryData(["user"], response);
 		},
 	});
 }
 
-export function useUpdateProfile() {
-	const { mutate, isPending } = useUpdateProfileMutation();
+export function useUpdateUser() {
+	const { mutate, isPending } = useUpdateUserMutation();
 	const { handleApiError } = useApiErrorHandler();
 	const { setLanguage } = useLanguage();
 	const t = useTranslations("Profile");
 
-	const updateProfile = (
-		data: ProfileInfoInput,
-		setError: UseFormSetError<ProfileInfoInput>,
+	const updateUser = (
+		data: UserInfoInput,
+		setError: UseFormSetError<UserInfoInput>,
 	) => {
-		mutate(data as ProfileInfoOutput, {
+		mutate(data as UserInfoOutput, {
 			onSuccess: () => {
 				toast.success(t("updateSuccess"));
 				setLanguage(data.language);
@@ -40,5 +40,5 @@ export function useUpdateProfile() {
 		});
 	};
 
-	return { updateProfile, isPending };
+	return { updateUser, isPending };
 }
