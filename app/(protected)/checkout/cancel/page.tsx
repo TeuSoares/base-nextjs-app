@@ -6,10 +6,13 @@ import { useTranslations } from "next-intl";
 import { ActionButton } from "@/components/common/action-button";
 import { APP_ROUTES } from "@/core/config/constants/navigation";
 import { useCheckout } from "@/features/billing/hooks/use-checkout";
+import { getValidSelectedPlan } from "@/features/billing/utils/planCookie";
 
 export default function CheckoutCancelPage() {
 	const t = useTranslations("Checkout.cancel");
 	const { checkout, isPending } = useCheckout();
+
+	const selectedPlan = getValidSelectedPlan();
 
 	return (
 		<div className="flex min-h-screen flex-col items-center justify-center bg-background p-6">
@@ -31,7 +34,7 @@ export default function CheckoutCancelPage() {
 					<ActionButton
 						loading={isPending}
 						loadingText={t("redirecting")}
-						onClick={() => checkout()}
+						onClick={() => checkout({ plan: selectedPlan })}
 						className="sm:w-auto"
 					>
 						{t("tryAgain")}

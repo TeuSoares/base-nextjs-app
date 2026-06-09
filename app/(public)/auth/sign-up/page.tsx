@@ -13,6 +13,7 @@ import {
 	createRegisterSchema,
 	type RegisterInput,
 } from "@/features/auth/schemas/register-schema";
+import { getValidSelectedPlan } from "@/features/billing/utils/planCookie";
 import { useLanguage, useZodSchema } from "@/hooks";
 
 export default function SignUpPage() {
@@ -42,7 +43,10 @@ export default function SignUpPage() {
 
 	const { register, isPending } = useRegister();
 
-	const onSubmit = (data: RegisterInput) => register(data, setError);
+	const selectedPlan = getValidSelectedPlan();
+
+	const onSubmit = (data: RegisterInput) =>
+		register(data, setError, selectedPlan);
 
 	return (
 		<AuthForm>
