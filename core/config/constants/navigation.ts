@@ -47,9 +47,17 @@ export const APP_ROUTES = {
 	changelog: "/changelog",
 	support: "/support",
 	feedback: "/feedback",
+} as const;
+
+export const BILLING_ROUTES = {
+	plans: "/billing/plans",
 	checkoutSuccess: "/checkout/success",
 	checkoutCancel: "/checkout/cancel",
 } as const;
+
+export const SUBSCRIPTION_IGNORED_ROUTES = [
+	BILLING_ROUTES.checkoutCancel,
+] as const;
 
 export const getSidebarNavItems = (t: TranslationFn): NavItem[] => [
 	{

@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { UseFormSetError } from "react-hook-form";
-import type { Plan } from "@/core/config/constants/payment";
+import type { Plans } from "@/core/config/constants/payment";
 import { useApiErrorHandler } from "@/hooks";
 import { useCheckout } from "../../billing/hooks/use-checkout";
 import type { RegisterInput, RegisterOutput } from "../schemas/register-schema";
@@ -28,7 +28,7 @@ export function useRegister() {
 	const register = (
 		data: RegisterInput,
 		setError: UseFormSetError<RegisterInput>,
-		plan?: Plan,
+		plan?: Plans,
 	) => {
 		mutate(data as RegisterOutput, {
 			onSuccess: () => {

@@ -1,13 +1,16 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import {
+	AUTH_ROUTES,
+	BILLING_ROUTES,
+} from "./core/config/constants/navigation";
 
 const PUBLIC_STATIC_ROUTES = new Set([
 	"/",
-	"/auth/sign-in",
-	"/auth/sign-up",
-	"/auth/forgot-password",
-	"/checkout/success",
-	"/checkout/cancel",
+	AUTH_ROUTES.signIn,
+	AUTH_ROUTES.signUp,
+	AUTH_ROUTES.forgotPassword,
+	BILLING_ROUTES.plans,
 ]);
 
 const PUBLIC_DYNAMIC_PREFIXES = ["/auth/reset-password"];
@@ -19,7 +22,13 @@ export function proxy(request: NextRequest) {
 	const pathname = nextUrl.pathname;
 
 	if (nextUrl.searchParams.get("clear") === "true") {
-		const response = NextResponse.next();
+		const requestHeaders = new Headers(request.headers);
+		requestHeaders.set("x-url", pathname);
+
+		const response = NextResponse.next({
+			request: { headers: requestHeaders },
+		});
+
 		response.cookies.delete("app_is_logged");
 		return response;
 	}
@@ -40,7 +49,12 @@ export function proxy(request: NextRequest) {
 		return NextResponse.redirect(loginUrl);
 	}
 
-	return NextResponse.next();
+	const requestHeaders = new Headers(request.headers);
+	requestHeaders.set("x-url", pathname);
+
+	return NextResponse.next({
+		request: { headers: requestHeaders },
+	});
 }
 
 export const config = {

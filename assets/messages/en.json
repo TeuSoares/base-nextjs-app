@@ -156,7 +156,37 @@
 	},
 
 	"Billing": {
-		"cancelSuccess": "Subscription cancelled successfully.",
-		"resumeSuccess": "Subscription resumed successfully."
+		"cancelSuccess": "Subscription canceled successfully.",
+		"resumeSuccess": "Subscription reactivated successfully.",
+		"title": "Choose the perfect plan for you",
+		"subtitle": "Get immediate access to all features and boost your productivity.",
+		"securePayment": "100% secure payment processed by {gateway}. Cancel anytime.",
+		"popularTag": "Most Popular (Save Big)",
+		"yearlyLabel": "Billed annually up front",
+		"ctaPopular": "Subscribe to Ideal Plan",
+		"ctaDefault": "Get Started Now",
+		"periods": {
+			"monthly": "/mo",
+			"monthlyEquivalent": "/mo equivalent"
+		},
+		"monthly": {
+			"name": "Monthly Plan",
+			"description": "Perfect for trying out the platform with maximum flexibility."
+		},
+		"yearly": {
+			"name": "Yearly Plan",
+			"description": "The best value. Save more than 20% per year."
+		},
+		"features": {
+			"all": {
+				"all_tools": "Full access to all tools",
+				"basic_reports": "Basic reports export",
+				"advanced_reports": "Advanced reports export (PDF/Excel)",
+				"email_support": "Email support",
+				"priority_support": "Priority support via WhatsApp/Email",
+				"refund_7_days": "7-day money-back guarantee",
+				"early_access": "Early access to new features"
+			}
+		}
 	}
 }

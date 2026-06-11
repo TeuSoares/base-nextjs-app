@@ -157,6 +157,36 @@
 
 	"Billing": {
 		"cancelSuccess": "Assinatura cancelada com sucesso.",
-		"resumeSuccess": "Assinatura reativada com sucesso."
+		"resumeSuccess": "Assinatura reativada com sucesso.",
+		"title": "Escolha o plano ideal para você",
+		"subtitle": "Tenha acesso imediato a todas as funcionalidades e turbine a sua produtividade.",
+		"securePayment": "Pagamento 100% seguro processado pelo {gateway}. Cancele a qualquer momento.",
+		"popularTag": "Mais Popular (Economize)",
+		"yearlyLabel": "Cobrado anualmente à vista",
+		"ctaPopular": "Assinar Plano Ideal",
+		"ctaDefault": "Começar Agora",
+		"periods": {
+			"monthly": "/mês",
+			"monthlyEquivalent": "/mês equivalente"
+		},
+		"monthly": {
+			"name": "Plano Mensal",
+			"description": "Ideal para quem quer testar a plataforma e ter flexibilidade total."
+		},
+		"yearly": {
+			"name": "Plano Anual",
+			"description": "O melhor custo-benefício. Economize mais de 20% ao ano."
+		},
+		"features": {
+			"all": {
+				"all_tools": "Acesso total a todas as ferramentas",
+				"basic_reports": "Exportação de relatórios básicos",
+				"advanced_reports": "Exportação de relatórios avançados (PDF/Excel)",
+				"email_support": "Suporte via e-mail",
+				"priority_support": "Suporte prioritário via WhatsApp/E-mail",
+				"refund_7_days": "Garantia de reembolso de 7 dias",
+				"early_access": "Acesso antecipado a novas features"
+			}
+		}
 	}
 }
