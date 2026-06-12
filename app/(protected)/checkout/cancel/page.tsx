@@ -4,7 +4,6 @@ import { XCircle } from "lucide-react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { ActionButton } from "@/components/common/action-button";
-import { APP_ROUTES } from "@/core/config/constants/navigation";
 import { useCheckout } from "@/features/billing/hooks/use-checkout";
 import { getValidSelectedPlan } from "@/features/billing/utils/planCookie";
 
@@ -30,7 +29,7 @@ export default function CheckoutCancelPage() {
 					</p>
 				</div>
 
-				<div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+				<div className="flex flex-col gap-3 sm:flex-row sm:justify-center items-center">
 					<ActionButton
 						loading={isPending}
 						loadingText={t("redirecting")}
@@ -40,7 +39,7 @@ export default function CheckoutCancelPage() {
 						{t("tryAgain")}
 					</ActionButton>
 					<Link
-						href={APP_ROUTES.dashboard}
+						href="/"
 						className="inline-flex items-center justify-center rounded-md border px-6 py-2.5 text-sm font-medium hover:bg-accent transition-colors sm:w-auto"
 					>
 						{t("back")}

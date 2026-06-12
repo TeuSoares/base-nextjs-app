@@ -2,19 +2,26 @@
 
 import { Check } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { Button } from "@/components/ui/button";
+import { ActionButton } from "@/components/common";
 import { useLanguage } from "@/hooks";
 import { useCheckout } from "../hooks/use-checkout";
 import type { Plan } from "../types";
+import { setSelectedPlanCookie } from "../utils/planCookie";
 
 interface PlanCardProps {
 	plan: Plan;
+	onAction?: () => void;
+	isLoadingExternal?: boolean;
 }
 
-export function PlanCard({ plan }: PlanCardProps) {
+export function PlanCard({ plan, onAction, isLoadingExternal }: PlanCardProps) {
 	const t = useTranslations("Billing");
+	const tButtons = useTranslations("Buttons");
+
 	const { locale } = useLanguage();
-	const { checkout } = useCheckout();
+	const { checkout, isPending } = useCheckout();
+
+	const isButtonLoading = isLoadingExternal || isPending;
 
 	const formattedPrice = new Intl.NumberFormat(
 		locale.toLowerCase().startsWith("pt") ? "pt-BR" : "en-US",
@@ -23,6 +30,17 @@ export function PlanCard({ plan }: PlanCardProps) {
 			currency: locale.toLowerCase().startsWith("pt") ? "BRL" : "USD",
 		},
 	).format(plan.price);
+
+	const handleButtonClick = () => {
+		setSelectedPlanCookie(plan.period);
+
+		if (onAction) {
+			onAction();
+			return;
+		}
+
+		checkout({ plan: plan.period });
+	};
 
 	return (
 		<div
@@ -87,13 +105,15 @@ export function PlanCard({ plan }: PlanCardProps) {
 			</div>
 
 			<div className="mt-8">
-				<Button
-					className="w-full rounded-xl py-3"
+				<ActionButton
+					className="rounded-xl py-3"
 					variant={plan.isPopular ? "default" : "secondary"}
-					onClick={() => checkout({ plan: plan.period })}
+					loading={isButtonLoading}
+					loadingText={tButtons("processing")}
+					onClick={handleButtonClick}
 				>
 					{plan.isPopular ? t("ctaPopular") : t("ctaDefault")}
-				</Button>
+				</ActionButton>
 			</div>
 		</div>
 	);

@@ -1,11 +1,12 @@
 import { api, getApiHeaders } from "@/core/api";
 import type { SubscriptionData } from "../types";
+import type { CheckoutResponse } from "./types";
 
 const base = "/api/billing";
 
 export const billingService = {
-	async checkout(data: { plan?: string }): Promise<{ url: string }> {
-		return api.request<{ url: string }>({
+	async checkout(data: { plan?: string }): Promise<CheckoutResponse> {
+		return api.request<CheckoutResponse>({
 			url: `${base}/checkout`,
 			method: "POST",
 			body: data,

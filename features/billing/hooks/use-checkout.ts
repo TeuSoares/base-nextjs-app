@@ -16,7 +16,7 @@ export function useCheckout() {
 	const checkout = (data: CheckoutInput = {}) => {
 		mutate(data, {
 			onSuccess: (response) => {
-				window.location.href = response.url;
+				window.location.href = response.data.url;
 			},
 			onError: (err) => handleApiError(err),
 		});

@@ -4,8 +4,18 @@
 		"description": "Um template inicial para construir aplicações web modernas com Next.js, React Query e Tailwind CSS."
 	},
 
-	"HomePage": {
-		"title": "Olá, mundo!"
+	"Marketing": {
+		"home": {
+			"hero": {
+				"title": "Turbine sua produtividade com a nossa plataforma",
+				"subtitle": "A ferramenta ideal para desenvolvedores que buscam modularidade, velocidade e organização no dia a dia."
+			},
+			"pricing": {
+				"title": "Planos flexíveis para o seu bolso",
+				"subtitle": "Escolha o plano que melhor se adapta ao seu momento. Cancele quando quiser."
+			},
+			"footer": "© 2026 Seu SaaS Modular. Todos os direitos reservados. Pagamentos processados via Stripe."
+		}
 	},
 
 	"Auth": {
@@ -101,7 +111,8 @@
 		"loading": "Carregando...",
 		"back": "Voltar",
 		"logout": "Sair",
-		"tryAgain": "Tentar novamente"
+		"tryAgain": "Tentar novamente",
+		"processing": "Processando..."
 	},
 
 	"Validation": {

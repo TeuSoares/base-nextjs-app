@@ -2,9 +2,7 @@ import { HydrationBoundary } from "@tanstack/react-query";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import type { ReactNode } from "react";
-import { AppSidebar } from "@/components/layout/sidebar/app-sidebar";
 import { ThemeProvider } from "@/components/theme/theme-provider";
-import { SidebarProvider } from "@/components/ui/sidebar";
 import {
 	AUTH_ROUTES,
 	BILLING_ROUTES,
@@ -46,17 +44,7 @@ export default async function ProtectedLayout({
 				enableSystem
 				disableTransitionOnChange
 			>
-				<SidebarProvider>
-					<AppSidebar
-						user={{
-							name: user.data?.name || "",
-							email: user.data?.email || "",
-						}}
-					/>
-					<div className="flex flex-col flex-1 min-h-screen min-w-0">
-						{children}
-					</div>
-				</SidebarProvider>
+				{children}
 			</ThemeProvider>
 		</HydrationBoundary>
 	);
