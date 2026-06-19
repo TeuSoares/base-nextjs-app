@@ -3,10 +3,11 @@ import type { Plans } from "@/core/config/constants/payment";
 export interface SubscriptionData {
 	plan: string;
 	status: string;
+	period: Plans;
 	ends_at: string | null;
 	trial_ends: string | null;
 	on_trial: boolean;
-	cancelled: boolean;
+	canceled: boolean;
 	active: boolean;
 }
 

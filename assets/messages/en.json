@@ -112,7 +112,9 @@
 		"back": "Back",
 		"logout": "Logout",
 		"tryAgain": "Try again",
-		"processing": "Processing..."
+		"processing": "Processing...",
+		"cancelSubscription": "Cancel Subscription",
+		"resumeSubscription": "Resume Subscription"
 	},
 
 	"Validation": {
@@ -124,6 +126,7 @@
 	"Navigation": {
 		"menu": "Menu",
 		"dashboard": "Dashboard",
+		"billing": "Billing",
 		"users": "Users",
 		"allUsers": "All Users",
 		"roles": "Roles",
@@ -158,7 +161,7 @@
 			"cta": "Go to dashboard"
 		},
 		"cancel": {
-			"title": "Checkout cancelled",
+			"title": "Checkout canceled",
 			"description": "No payment was made. You can try again whenever you're ready.",
 			"tryAgain": "Try again",
 			"back": "Back",
@@ -167,8 +170,6 @@
 	},
 
 	"Billing": {
-		"cancelSuccess": "Subscription canceled successfully.",
-		"resumeSuccess": "Subscription reactivated successfully.",
 		"title": "Choose the perfect plan for you",
 		"subtitle": "Get immediate access to all features and boost your productivity.",
 		"securePayment": "100% secure payment processed by {gateway}. Cancel anytime.",
@@ -198,6 +199,48 @@
 				"refund_7_days": "7-day money-back guarantee",
 				"early_access": "Early access to new features"
 			}
+		}
+	},
+
+	"BillingPage": {
+		"title": "Subscription & Billing",
+		"currentlyOn": "Your current plan",
+		"statusActive": "Active",
+		"statusCanceled": "Canceled",
+		"statusLifetime": "Lifetime",
+		"current": "Current Plan",
+		"canceledNotice": "Your subscription has been canceled, but your premium features remain active until {date}.",
+		"plansTitle": "Plans & Upgrades",
+		"plansSubtitle": "Change your account billing cycle whenever you want.",
+		"switchTo": "Switch to this plan",
+		"swapSuccess": "Plan changed successfully!",
+		"cancelSuccess": "Subscription canceled successfully.",
+		"resumeSuccess": "Subscription successfully reactivated! 🎉",
+		"monthly": {
+			"name": "Monthly Plan",
+			"description": "Full access billed month-to-month."
+		},
+		"yearly": {
+			"name": "Yearly Plan",
+			"description": "Full access with a discount on the annual cycle."
+		},
+		"periods": {
+			"monthly": "Monthly",
+			"yearly": "Yearly",
+			"lifetime": "Lifetime"
+		},
+		"periodsDetails": {
+			"monthly": "per month",
+			"yearly": "per month (billed annually)",
+			"lifetime": "one-time payment"
+		},
+		"dangerZone": {
+			"cancelTitle": "Want to cancel your subscription?",
+			"cancelDesc": "By cancelling, you will still have full access to premium features until your current billing cycle ends.",
+			"resumeTitle": "Want to resume your subscription?",
+			"resumeDesc": "We're glad you're staying! Resume now to avoid any interruption to your services.",
+			"lifetimeTitle": "You're a Lifetime member! 🎉",
+			"lifetimeDesc": "Your account has guaranteed permanent access. No further billing action is required."
 		}
 	}
 }

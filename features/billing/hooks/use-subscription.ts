@@ -5,6 +5,7 @@ export function useSubscription() {
 	return useQuery({
 		queryKey: ["subscription"],
 		queryFn: () => billingService.getSubscription(),
+		select: (response) => response?.data,
 		staleTime: 1000 * 60 * 5,
 		retry: false,
 	});

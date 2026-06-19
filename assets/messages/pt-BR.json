@@ -112,7 +112,9 @@
 		"back": "Voltar",
 		"logout": "Sair",
 		"tryAgain": "Tentar novamente",
-		"processing": "Processando..."
+		"processing": "Processando...",
+		"cancelSubscription": "Cancelar Assinatura",
+		"resumeSubscription": "Reativar Assinatura"
 	},
 
 	"Validation": {
@@ -124,6 +126,7 @@
 	"Navigation": {
 		"menu": "Menu",
 		"dashboard": "Painel",
+		"billing": "Assinatura",
 		"users": "Usuários",
 		"allUsers": "Todos os usuários",
 		"roles": "Funções",
@@ -167,8 +170,6 @@
 	},
 
 	"Billing": {
-		"cancelSuccess": "Assinatura cancelada com sucesso.",
-		"resumeSuccess": "Assinatura reativada com sucesso.",
 		"title": "Escolha o plano ideal para você",
 		"subtitle": "Tenha acesso imediato a todas as funcionalidades e turbine a sua produtividade.",
 		"securePayment": "Pagamento 100% seguro processado pelo {gateway}. Cancele a qualquer momento.",
@@ -198,6 +199,48 @@
 				"refund_7_days": "Garantia de reembolso de 7 dias",
 				"early_access": "Acesso antecipado a novas features"
 			}
+		}
+	},
+
+	"BillingPage": {
+		"title": "Assinatura & Faturamento",
+		"currentlyOn": "Seu plano atual",
+		"statusActive": "Ativo",
+		"statusCanceled": "Cancelado",
+		"statusLifetime": "Vitalício",
+		"current": "Plano Atual",
+		"canceledNotice": "Sua assinatura foi cancelada, mas seus recursos premium continuam ativos até {date}.",
+		"plansTitle": "Planos & Alterações",
+		"plansSubtitle": "Altere o ciclo de cobrança da sua conta quando quiser.",
+		"switchTo": "Mudar para este plano",
+		"swapSuccess": "Plano alterado com sucesso!",
+		"cancelSuccess": "Assinatura cancelada com sucesso.",
+		"resumeSuccess": "Assinatura reativada com sucesso! 🎉",
+		"monthly": {
+			"name": "Plano Mensal",
+			"description": "Acesso total cobrado mês a mês."
+		},
+		"yearly": {
+			"name": "Plano Anual",
+			"description": "Acesso total com desconto no ciclo anual."
+		},
+		"periods": {
+			"monthly": "Mensal",
+			"yearly": "Anual",
+			"lifetime": "Vitalício"
+		},
+		"periodsDetails": {
+			"monthly": "por mês",
+			"yearly": "por mês (cobrado anualmente)",
+			"lifetime": "pagamento único"
+		},
+		"dangerZone": {
+			"cancelTitle": "Deseja cancelar sua assinatura?",
+			"cancelDesc": "Ao cancelar, você continuará com acesso total aos recursos premium até o vencimento da sua fatura atual.",
+			"resumeTitle": "Deseja reativar sua assinatura?",
+			"resumeDesc": "Ficamos felizes que decidiu ficar! Reative agora para evitar a interrupção dos seus serviços.",
+			"lifetimeTitle": "Você é Vitalício! 🎉",
+			"lifetimeDesc": "Sua conta possui acesso permanente garantido ao sistema. Nenhuma ação adicional de cobrança é necessária."
 		}
 	}
 }

@@ -1,31 +1,32 @@
+// features/billing/hooks/use-swap-plan.ts
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { useApiErrorHandler } from "@/hooks";
 import { billingService } from "../services/billing-service";
 
-function useResumeSubscriptionMutation() {
+function useSwapPlanMutation() {
 	const queryClient = useQueryClient();
 
 	return useMutation({
-		mutationFn: () => billingService.resume(),
+		mutationFn: (plan: string) => billingService.swap({ plan }),
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ["subscription"] });
 		},
 	});
 }
 
-export function useResumeSubscription() {
-	const { mutate, isPending } = useResumeSubscriptionMutation();
+export function useSwapPlan() {
+	const { mutate, isPending } = useSwapPlanMutation();
 	const { handleApiError } = useApiErrorHandler();
 	const t = useTranslations("BillingPage");
 
-	const resume = () => {
-		mutate(undefined, {
-			onSuccess: () => toast.success(t("resumeSuccess")),
+	const swapPlan = (plan: string) => {
+		mutate(plan, {
+			onSuccess: () => toast.success(t("swapSuccess")),
 			onError: (err) => handleApiError(err),
 		});
 	};
 
-	return { resume, isPending };
+	return { swapPlan, isPending };
 }

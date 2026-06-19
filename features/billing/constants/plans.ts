@@ -6,7 +6,7 @@ export const BILLING_GATEWAY = {
 
 export const PLANS: Plan[] = [
 	{
-		id: "plan-mensal",
+		id: "monthly-plan",
 		nameKey: "monthly.name",
 		price: 49.9,
 		period: "monthly",
@@ -19,7 +19,7 @@ export const PLANS: Plan[] = [
 		],
 	},
 	{
-		id: "plan-anual",
+		id: "yearly-plan",
 		nameKey: "yearly.name",
 		price: 39.9,
 		period: "yearly",

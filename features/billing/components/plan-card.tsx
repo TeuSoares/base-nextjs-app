@@ -4,6 +4,7 @@ import { Check } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { ActionButton } from "@/components/common";
 import { useLanguage } from "@/hooks";
+import { formatPrice } from "@/utils";
 import { useCheckout } from "../hooks/use-checkout";
 import type { Plan } from "../types";
 import { setSelectedPlanCookie } from "../utils/planCookie";
@@ -22,14 +23,6 @@ export function PlanCard({ plan, onAction, isLoadingExternal }: PlanCardProps) {
 	const { checkout, isPending } = useCheckout();
 
 	const isButtonLoading = isLoadingExternal || isPending;
-
-	const formattedPrice = new Intl.NumberFormat(
-		locale.toLowerCase().startsWith("pt") ? "pt-BR" : "en-US",
-		{
-			style: "currency",
-			currency: locale.toLowerCase().startsWith("pt") ? "BRL" : "USD",
-		},
-	).format(plan.price);
 
 	const handleButtonClick = () => {
 		setSelectedPlanCookie(plan.period);
@@ -72,7 +65,7 @@ export function PlanCard({ plan, onAction, isLoadingExternal }: PlanCardProps) {
 
 				<div className="my-6 flex items-baseline text-foreground">
 					<span className="text-5xl font-extrabold tracking-tight">
-						{formattedPrice}
+						{formatPrice(plan.price, locale)}
 					</span>
 					<span className="ml-1 text-xl font-semibold text-muted-foreground">
 						{plan.period === "monthly"

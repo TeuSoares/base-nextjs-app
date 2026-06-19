@@ -18,7 +18,7 @@ function useCancelSubscriptionMutation() {
 export function useCancelSubscription() {
 	const { mutate, isPending } = useCancelSubscriptionMutation();
 	const { handleApiError } = useApiErrorHandler();
-	const t = useTranslations("Billing");
+	const t = useTranslations("BillingPage");
 
 	const cancel = () => {
 		mutate(undefined, {

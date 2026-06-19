@@ -1,4 +1,5 @@
 import {
+	CreditCard,
 	LayoutDashboard,
 	LifeBuoy,
 	type LucideIcon,
@@ -50,6 +51,7 @@ export const APP_ROUTES = {
 } as const;
 
 export const BILLING_ROUTES = {
+	manage: "/billing",
 	plans: "/billing/plans",
 	checkoutSuccess: "/checkout/success",
 	checkoutCancel: "/checkout/cancel",
@@ -64,6 +66,11 @@ export const getSidebarNavItems = (t: TranslationFn): NavItem[] => [
 		title: t("dashboard"),
 		icon: LayoutDashboard,
 		href: APP_ROUTES.dashboard,
+	},
+	{
+		title: t("billing"),
+		icon: CreditCard,
+		href: BILLING_ROUTES.manage,
 	},
 	{
 		title: t("users"),
