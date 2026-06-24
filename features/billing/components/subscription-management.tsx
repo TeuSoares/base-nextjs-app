@@ -75,7 +75,7 @@ export function SubscriptionManagement({
 						onClick={onResume}
 					>
 						<div className="flex items-center justify-center gap-1.5 w-full h-full">
-							<span>{tButtons("resumeSubscription")}</span>
+							<span>{t("resumeSubscription")}</span>
 						</div>
 					</ActionButton>
 				)}
@@ -89,7 +89,7 @@ export function SubscriptionManagement({
 						onClick={onCancel}
 					>
 						<div className="flex items-center justify-center gap-1.5 w-full h-full">
-							<span>{tButtons("cancelSubscription")}</span>
+							<span>{t("cancelSubscription")}</span>
 						</div>
 					</ActionButton>
 				)}

@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { PricingSection } from "@/features/billing/components/pricing-section";
 
 export default function PlansPage() {
-	const t = useTranslations("Billing");
+	const t = useTranslations("Pricing");
 
 	return (
 		<div className="min-h-screen bg-background py-20 px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center">

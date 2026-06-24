@@ -3,7 +3,7 @@ import { BILLING_GATEWAY, PLANS } from "../constants/plans";
 import { PlanCard } from "./plan-card";
 
 export function PricingSection() {
-	const t = useTranslations("Billing");
+	const t = useTranslations("Pricing");
 
 	return (
 		<div className="w-full flex flex-col items-center">

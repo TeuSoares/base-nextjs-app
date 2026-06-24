@@ -24,7 +24,7 @@ export const createResetPasswordSchema = (
 			password_confirmation: z.string().min(1, v("fieldRequired")),
 		})
 		.refine((data) => data.password === data.password_confirmation, {
-			message: av("passwordsMustMatch"),
+			message: v("passwordsMustMatch"),
 			path: ["password_confirmation"],
 		});
 

@@ -9,12 +9,48 @@
 			"hero": {
 				"title": "Turbine sua produtividade com a nossa plataforma",
 				"subtitle": "A ferramenta ideal para desenvolvedores que buscam modularidade, velocidade e organização no dia a dia."
+			}
+		}
+	},
+
+	"Pricing": {
+		"title": "Planos flexíveis para o seu bolso",
+		"subtitle": "Escolha o plano que melhor se adapta ao seu momento. Cancele quando quiser.",
+		"footer": "Pagamento 100% seguro processado pelo {gateway}. Cancele a qualquer momento.",
+		"popularTag": "Mais Popular",
+		"ctaPopular": "Começar — Melhor Custo-Benefício",
+		"ctaDefault": "Começar Agora",
+		"periods": {
+			"monthly": "/mês",
+			"monthlyEquivalent": "/mês equivalente"
+		},
+		"plans": {
+			"monthly": {
+				"name": "Mensal",
+				"description": "Ideal para quem quer testar a plataforma e ter flexibilidade total.",
+				"billing": "Cobrado mensalmente"
 			},
-			"pricing": {
-				"title": "Planos flexíveis para o seu bolso",
-				"subtitle": "Escolha o plano que melhor se adapta ao seu momento. Cancele quando quiser."
+			"yearly": {
+				"name": "Anual",
+				"description": "O melhor custo-benefício. Economize mais de 20% ao ano.",
+				"billing": "Cobrado anualmente à vista"
+			}
+		},
+		"features": {
+			"all": {
+				"all_tools": "Acesso total a todas as ferramentas",
+				"basic_reports": "Exportação de relatórios básicos",
+				"email_support": "Suporte via e-mail",
+				"refund_7_days": "Garantia de reembolso de 7 dias"
 			},
-			"footer": "© 2026 Seu SaaS Modular. Todos os direitos reservados. Pagamentos processados via Stripe."
+			"monthly": {
+				"flexible_cancel": "Cancele quando quiser, sem compromisso"
+			},
+			"yearly": {
+				"advanced_reports": "Exportação de relatórios avançados (PDF/Excel)",
+				"priority_support": "Suporte prioritário via WhatsApp/E-mail",
+				"early_access": "Acesso antecipado a novas features"
+			}
 		}
 	},
 
@@ -41,7 +77,6 @@
 			"emailInvalid": "E-mail inválido",
 			"passwordMin": "A senha deve ter no mínimo {min} caracteres",
 			"passwordMax": "Senha muito longa",
-			"passwordsMustMatch": "As senhas não coincidem",
 			"nameMin": "O nome deve ter no mínimo {min} caracteres",
 			"nameMax": "O nome deve ter no máximo {max} caracteres",
 			"nameInvalid": "O nome deve conter apenas letras",
@@ -50,9 +85,8 @@
 		"signIn": {
 			"title": "Faça login na sua conta",
 			"description": "Insira suas credenciais para acessar a plataforma",
-			"passwordPlaceholder": "Digite sua senha",
 			"forgotPassword": "Esqueceu a senha?",
-			"submit": "Entrar na plataforma",
+			"submit": "Entrar",
 			"loading": "Autenticando...",
 			"noAccount": "Ainda não tem conta?",
 			"signUpLink": "Cadastre-se"
@@ -60,7 +94,7 @@
 		"signUp": {
 			"title": "Crie sua conta",
 			"description": "Preencha os dados abaixo para se cadastrar",
-			"submit": "Finalizar cadastro",
+			"submit": "Criar conta",
 			"loading": "Criando conta...",
 			"alreadyHasAccount": "Já tem uma conta?",
 			"signInLink": "Faça login"
@@ -77,7 +111,7 @@
 		"resetPassword": {
 			"title": "Redefinir senha",
 			"description": "Escolha uma nova senha para sua conta.",
-			"submit": "Redefinir Senha",
+			"submit": "Redefinir senha",
 			"loading": "Atualizando senha...",
 			"success": "Senha redefinida com sucesso!"
 		}
@@ -92,7 +126,8 @@
 		"unexpected": "Ocorreu um erro inesperado. Tente novamente.",
 		"connection": "Não foi possível conectar ao servidor.",
 		"validation": "Verifique os campos destacados no formulário.",
-		"timeout": "Tempo limite de requisição atingido."
+		"timeout": "Tempo limite de requisição atingido.",
+		"tryAgain": "Tentar novamente"
 	},
 
 	"Common": {
@@ -112,9 +147,7 @@
 		"back": "Voltar",
 		"logout": "Sair",
 		"tryAgain": "Tentar novamente",
-		"processing": "Processando...",
-		"cancelSubscription": "Cancelar Assinatura",
-		"resumeSubscription": "Reativar Assinatura"
+		"processing": "Processando..."
 	},
 
 	"Validation": {
@@ -164,83 +197,46 @@
 			"title": "Checkout cancelado",
 			"description": "Nenhum pagamento foi realizado. Você pode tentar novamente quando quiser.",
 			"tryAgain": "Tentar novamente",
-			"back": "Voltar",
+			"back": "Voltar para o painel",
 			"redirecting": "Redirecionando para o Stripe..."
 		}
 	},
 
-	"Billing": {
-		"title": "Escolha o plano ideal para você",
-		"subtitle": "Tenha acesso imediato a todas as funcionalidades e turbine a sua produtividade.",
-		"securePayment": "Pagamento 100% seguro processado pelo {gateway}. Cancele a qualquer momento.",
-		"popularTag": "Mais Popular (Economize)",
-		"yearlyLabel": "Cobrado anualmente à vista",
-		"ctaPopular": "Assinar Plano Ideal",
-		"ctaDefault": "Começar Agora",
-		"periods": {
-			"monthly": "/mês",
-			"monthlyEquivalent": "/mês equivalente"
-		},
-		"monthly": {
-			"name": "Plano Mensal",
-			"description": "Ideal para quem quer testar a plataforma e ter flexibilidade total."
-		},
-		"yearly": {
-			"name": "Plano Anual",
-			"description": "O melhor custo-benefício. Economize mais de 20% ao ano."
-		},
-		"features": {
-			"all": {
-				"all_tools": "Acesso total a todas as ferramentas",
-				"basic_reports": "Exportação de relatórios básicos",
-				"advanced_reports": "Exportação de relatórios avançados (PDF/Excel)",
-				"email_support": "Suporte via e-mail",
-				"priority_support": "Suporte prioritário via WhatsApp/E-mail",
-				"refund_7_days": "Garantia de reembolso de 7 dias",
-				"early_access": "Acesso antecipado a novas features"
-			}
-		}
-	},
-
 	"BillingPage": {
-		"title": "Assinatura & Faturamento",
+		"title": "Assinatura",
 		"currentlyOn": "Seu plano atual",
 		"statusActive": "Ativo",
 		"statusCanceled": "Cancelado",
-		"statusLifetime": "Vitalício",
-		"current": "Plano Atual",
+		"current": "Plano atual",
 		"canceledNotice": "Sua assinatura foi cancelada, mas seus recursos premium continuam ativos até {date}.",
 		"plansTitle": "Planos & Alterações",
 		"plansSubtitle": "Altere o ciclo de cobrança da sua conta quando quiser.",
-		"switchTo": "Mudar para este plano",
-		"swapSuccess": "Plano alterado com sucesso!",
-		"cancelSuccess": "Assinatura cancelada com sucesso.",
-		"resumeSuccess": "Assinatura reativada com sucesso! 🎉",
 		"monthly": {
-			"name": "Plano Mensal",
+			"name": "Mensal",
 			"description": "Acesso total cobrado mês a mês."
 		},
 		"yearly": {
-			"name": "Plano Anual",
+			"name": "Anual",
 			"description": "Acesso total com desconto no ciclo anual."
 		},
 		"periods": {
-			"monthly": "Mensal",
-			"yearly": "Anual",
-			"lifetime": "Vitalício"
-		},
-		"periodsDetails": {
 			"monthly": "por mês",
-			"yearly": "por mês (cobrado anualmente)",
-			"lifetime": "pagamento único"
+			"yearly": "por mês (cobrado anualmente)"
 		},
+		"switchTo": "Mudar para este plano",
+		"switching": "Trocando...",
+		"swapSuccess": "Plano alterado com sucesso!",
 		"dangerZone": {
-			"cancelTitle": "Deseja cancelar sua assinatura?",
-			"cancelDesc": "Ao cancelar, você continuará com acesso total aos recursos premium até o vencimento da sua fatura atual.",
-			"resumeTitle": "Deseja reativar sua assinatura?",
-			"resumeDesc": "Ficamos felizes que decidiu ficar! Reative agora para evitar a interrupção dos seus serviços.",
-			"lifetimeTitle": "Você é Vitalício! 🎉",
-			"lifetimeDesc": "Sua conta possui acesso permanente garantido ao sistema. Nenhuma ação adicional de cobrança é necessária."
-		}
+			"cancelTitle": "Quer cancelar?",
+			"cancelDesc": "Você mantém acesso total até o fim do período já pago.",
+			"resumeTitle": "Quer reativar?",
+			"resumeDesc": "Reative agora para evitar a interrupção dos seus serviços."
+		},
+		"cancelSubscription": "Cancelar assinatura",
+		"resumeSubscription": "Reativar assinatura",
+		"canceling": "Cancelando...",
+		"resuming": "Reativando...",
+		"cancelSuccess": "Assinatura cancelada com sucesso.",
+		"resumeSuccess": "Assinatura reativada com sucesso!"
 	}
 }

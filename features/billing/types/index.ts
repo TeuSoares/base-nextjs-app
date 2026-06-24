@@ -19,4 +19,5 @@ export interface Plan {
 	featuresKeys: string[];
 	isPopular?: boolean;
 	descriptionKey?: string;
+	billingKey?: string;
 }

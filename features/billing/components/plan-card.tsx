@@ -16,7 +16,7 @@ interface PlanCardProps {
 }
 
 export function PlanCard({ plan, onAction, isLoadingExternal }: PlanCardProps) {
-	const t = useTranslations("Billing");
+	const t = useTranslations("Pricing");
 	const tButtons = useTranslations("Buttons");
 
 	const { locale } = useLanguage();
@@ -74,9 +74,9 @@ export function PlanCard({ plan, onAction, isLoadingExternal }: PlanCardProps) {
 					</span>
 				</div>
 
-				{plan.period === "yearly" && (
+				{plan.billingKey && (
 					<p className="text-xs text-primary font-medium -mt-4 mb-6">
-						{t("yearlyLabel")}
+						{t(plan.billingKey)}
 					</p>
 				)}
 

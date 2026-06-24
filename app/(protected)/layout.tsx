@@ -9,7 +9,7 @@ import {
 	SUBSCRIPTION_IGNORED_ROUTES,
 } from "@/core/config/constants/navigation";
 import { getDehydratedState } from "@/core/services/query-client";
-import { LanguageSyncer } from "@/features/auth/components/language-syncer";
+import { LanguageSyncer } from "@/features/auth/components";
 import { getServerUser } from "@/features/auth/services/auth-server";
 import { shouldSkipSubscriptionCheck } from "@/features/billing/utils/shouldSkipSubscriptionCheck";
 

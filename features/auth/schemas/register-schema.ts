@@ -51,7 +51,7 @@ export const createRegisterSchema = (v: TranslationFn, av: TranslationFn) =>
 				),
 		})
 		.refine((data) => data.password === data.password_confirmation, {
-			message: av("passwordsMustMatch"),
+			message: v("passwordsMustMatch"),
 			path: ["password_confirmation"],
 		});
 
